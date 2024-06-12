@@ -14,7 +14,7 @@ linux:
       ceph_ip: 10.0.2.4
   vars:
     ansible_become: true
-    ansible_become_pass: S3cr3t0!
+    ansible_become_pass: Password
     ansible_ssh_extra_args: -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null
-    ansible_ssh_pass: S3cr3t0!
-    ansible_user: linuxroot
+    ansible_ssh_pass: Password
+    ansible_user: linuxadmin
