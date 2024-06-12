@@ -3,6 +3,6 @@
 
 netplan set ethernets.ens224.dhcp4=false
 #openstack1 => 10.0.2.101
-ip="{{ hostvars[node].ceph_ip }}"
+ip="{{ hostvars[inventory_hostname].ceph_ip }}"
 netplan set ethernets.ens224.addresses=[$ip/24]
 netplan apply
