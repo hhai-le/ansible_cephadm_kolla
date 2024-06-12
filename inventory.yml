@@ -1,0 +1,20 @@
+linux:
+  hosts:
+    openstack1:
+      ansible_host: 192.168.86.131
+      ceph_ip: 10.0.2.1
+    openstack2:
+      ansible_host: 192.168.86.132
+      ceph_ip: 10.0.2.2
+    openstack3:  
+      ansible_host: 192.168.86.133
+      ceph_ip: 10.0.2.3
+    openstack4:  
+      ansible_host: 192.168.86.134
+      ceph_ip: 10.0.2.4
+  vars:
+    ansible_become: true
+    ansible_become_pass: S3cr3t0!
+    ansible_ssh_extra_args: -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null
+    ansible_ssh_pass: S3cr3t0!
+    ansible_user: linuxroot

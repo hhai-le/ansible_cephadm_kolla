@@ -1,0 +1,38 @@
+---
+- name: install common package for cephadm
+  apt:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - chrony
+    - software-properties-common
+    - git
+    - curl
+    - vim
+    - bash-completion
+    - ansible
+
+- name: cephadm apt key
+  shell: wget -q -O- 'https://download.ceph.com/keys/release.asc' | sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/ceph.gpg
+
+- name: cephadm repo
+  apt_repository:
+    repo: "deb https://download.ceph.com/debian-reef/ {{ ansible_distribution_release }} main" 
+    filename: /etc/apt/sources.list.d/ceph.list
+    state: present
+
+- name: install cephadm package
+  apt:
+    name: cephadm
+    state: present
+    update_cache: true
+
+- name: cephadm bootstrap
+  shell: |
+    cephadm bootstrap \
+     --mon-ip "{{ mon_ip }}" \
+     --cluster-network "{{ cluster_network }}" \
+     --initial-dashboard-user "{{ ceph_initial_dashboard_user }}" \
+     --initial-dashboard-password "{{ ceph_initial_dashboard_password }}"
+
+- name: 

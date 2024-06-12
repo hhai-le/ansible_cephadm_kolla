@@ -1,0 +1,24 @@
+---
+- name: update host
+  template:
+    src: hosts.j2
+    dest: /etc/hosts
+
+- name: edit nrconf
+  lineinfile:
+    path: /etc/needrestart/conf.d/no-prompt.conf
+    line: $nrconf{restart} = 'a';
+
+- name: force kill unattended-upgrades if running
+  shell: ps uax | grep "unattended-upgrade --download-only" | awk '{print $2}' | xargs kill -9
+  ignore_errors: true
+
+- name: remove unattended-upgrade
+  apt:
+    name: unattended-upgrades
+    state: absent
+
+- name: install chrony
+  apt:
+    name: chrony
+    state: present

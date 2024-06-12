@@ -1,0 +1,10 @@
+---
+- name: copy netplan_update script to server
+  template:
+    src: netplan_update.sh.j2
+    dest: /tmp/netplan_update.sh
+    mode: '0755'
+
+- name: update network 
+  shell: /bin/bash /tmp/netplan_update.sh
+

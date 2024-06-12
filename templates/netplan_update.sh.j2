@@ -1,0 +1,8 @@
+#!/bin/bash
+# NIC for ceph cluster network
+
+netplan set ethernets.ens224.dhcp4=false
+#openstack1 => 10.0.2.101
+ip="{{ hostvars[node].ceph_ip }}"
+netplan set ethernets.ens224.addresses=[$ip/24]
+netplan apply

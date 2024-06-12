@@ -1,0 +1,23 @@
+---
+# tasks file for ansible_openstack_ceph
+
+- include_tasks: sshd.yml
+- include_tasks: netplan.yml
+- include_tasks: common.yml
+
+#- name: install cephadm
+#- name: update storage NIC
+#- name: cephadm bootstrap
+#- name: update ceph.pub for all hosts
+#- name: ceph-common
+#- name: add other hosts to cluster
+#- name: apply MON service
+#- name: add label for hosts
+#- name: apply osd
+#- name: create rbd pool
+#- name: create keyring
+#- name: install kolla-ansible
+#- name: init kolla config
+#- name: globals.yml
+#- name: kolla-ansible bootstrap, precheck, deploy
+#
