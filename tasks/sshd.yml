@@ -4,7 +4,7 @@
   blockinfile:
     path: /etc/ssh/sshd_config
     block: |
-      Match Address {{ hostvars["openstack1"].ansible_host }}
+      Match Address {{ hostvars['deployer'].ansible_host }}
               PermitRootLogin yes
 
 - name: restart sshd

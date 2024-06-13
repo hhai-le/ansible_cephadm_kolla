@@ -2,10 +2,17 @@
 # tasks file for ansible_openstack_ceph
 
 - include_tasks: sshd.yml
+  when: install_ceph|bool == true or
+        install_all|bool == true
 - include_tasks: netplan.yml
+  when: install_ceph|bool == true or
+        install_all|bool == true
 - include_tasks: common.yml
+  when: install_ceph|bool == true or
+        install_all|bool == true
 - include_tasks: cephadm.yml
-  when: inventory_hostname in groups['deployer']
+  when: ( install_ceph|bool == true and inventory_hostname in groups['deployer'] ) or
+        ( install_all|bool == true and inventory_hostname in groups['deployer'] )
 
 #- name: update storage NIC
 #- name: cephadm bootstrap
