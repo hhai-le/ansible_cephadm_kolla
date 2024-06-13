@@ -2,6 +2,6 @@
 
 {% for node in groups["linux"] %}
 ssh-keygen -R {{ hostvars[node].inventory_hostname }}
-ssh-keyscan -H {{ hostvars[node].inventory_hostname }} >> /root/.ssh/knowns_host
+ssh-keyscan -H {{ hostvars[node].inventory_hostname }} >> /root/.ssh/known_hosts
 cat /etc/ceph/ceph.pub | ssh root@{{ hostvars[node].inventory_hostname }} "cat >> /root/.ssh/authorized_keys"
 {% endfor %}
