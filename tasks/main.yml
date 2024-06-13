@@ -9,6 +9,8 @@
   when: install_ceph|bool == true
 - include_tasks: cephadm.yml
   when: install_ceph|bool == true and inventory_hostname in groups['deployer']
+- include_tasks: ceph.yml
+  when: install_ceph|bool == true and inventory_hostname in groups['deployer']
 
 #- name: update storage NIC
 #- name: cephadm bootstrap
