@@ -8,6 +8,7 @@
   lineinfile:
     path: /etc/needrestart/conf.d/no-prompt.conf
     line: $nrconf{restart} = 'a';
+    state: present
 
 - name: force kill unattended-upgrades if running
   shell: ps uax | grep "unattended-upgrade --download-only" | awk '{print $2}' | xargs kill -9
