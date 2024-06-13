@@ -1,5 +1,6 @@
 ---
 - name: PermitRootLogin from first host
+  when: inventory_hostname in groups['first_host']
   blockinfile:
     path: /etc/ssh/sshd_config
     block: |

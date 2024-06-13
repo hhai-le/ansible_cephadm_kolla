@@ -1,3 +1,11 @@
+first_host:
+  hosts:
+    openstack1:
+other_hosts:
+  hosts:
+    openstack2:
+    openstack3:
+    openstack4:
 linux:
   hosts:
     openstack1:

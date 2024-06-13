@@ -4,8 +4,8 @@
 - include_tasks: sshd.yml
 - include_tasks: netplan.yml
 - include_tasks: common.yml
+- include_tasks: cephadm.yml
 
-#- name: install cephadm
 #- name: update storage NIC
 #- name: cephadm bootstrap
 #- name: update ceph.pub for all hosts
