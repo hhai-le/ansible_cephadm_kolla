@@ -1,7 +1,7 @@
-first_host:
+deployer:
   hosts:
     openstack1:
-other_hosts:
+non_deployer:
   hosts:
     openstack2:
     openstack3:
