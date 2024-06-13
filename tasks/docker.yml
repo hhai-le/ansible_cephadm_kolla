@@ -1,21 +1,23 @@
 ---
+- name: install build-essential packages for docker 
+  apt:
+    name: build-essential
+    state: present
+    update_cache: true
+
 - name: install prerequisite packages for docker 
   apt:
     name: "{{ item }}"
     state: present
+    update_cache: true
   with_items:
     - ca-certificates
     - curl
     - make
-    - build-essential
     - vim
     - lsb-release
     - wget
     - lvm2
-  retries: 3
-  delay: 3
-  register: result
-  until: result.rc == 0
 
 - name: remove old docker gpg 
   file:
