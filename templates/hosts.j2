@@ -1,7 +1,7 @@
 127.0.0.1 localhost
 
 {% for node in groups["linux"] %}
-{{ hostvars[node].ansible_host }} {{ hostvars[node]}}
+{{ hostvars[node].ansible_host }} {{ hostvars[node].inventory_hostname}}
 {% endfor %}
 
 {{ virtual_ip }} {{ virtual_domain }}
