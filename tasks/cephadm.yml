@@ -35,4 +35,11 @@
      --initial-dashboard-user "{{ ceph_initial_dashboard_user }}" \
      --initial-dashboard-password "{{ ceph_initial_dashboard_password }}"
 
-- name: 
+- name: generate update knowns_host and ceph.pub scripts
+  template:
+    src: ceph_pub.sh.j2
+    dest: /tmp/ceph_pub.sh
+    mode: '0755'
+
+- name: run update knowns_host and ceph.pub scripts
+  shell: /bin/bash /tmp/ceph_pub.sh
