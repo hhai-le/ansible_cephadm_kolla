@@ -12,6 +12,11 @@
     - bash-completion
     - ansible
 
+- name: remove cephadm key if exist
+  file:
+    path: /etc/apt/trusted.gpg.d/ceph.gpg
+    state: absent
+
 - name: cephadm apt key
   shell: wget -q -O- 'https://download.ceph.com/keys/release.asc' | sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/ceph.gpg
 
