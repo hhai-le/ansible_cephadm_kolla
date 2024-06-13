@@ -12,6 +12,16 @@
     - lsb-release
     - wget
     - lvm2
+  retries: 3
+  delay: 3
+  register: result
+  until: result.rc == 0
+
+- name: remove old docker gpg 
+  file:
+    path: /etc/apt/keyrings/docker.gpg
+    state: absent
+
 - name: add docker gpg
   shell: curl -fsSL https://download.docker.com/linux/ubuntu/gpg | gpg --dearmor -o /etc/apt/keyrings/docker.gpg
 
