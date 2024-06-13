@@ -1,3 +1,4 @@
-{% for node in groups["non-deployer"] %}
-orch host add node
+#!/bin/bash
+{% for node in groups['non_deployer'] %}
+orch host add node {{ hostvars[node].inventory_hostname }}
 {% endfor %}
