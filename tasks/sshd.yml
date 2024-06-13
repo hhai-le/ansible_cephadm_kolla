@@ -3,9 +3,13 @@
   when: inventory_hostname in groups['non_deployer']
   blockinfile:
     path: /etc/ssh/sshd_config
+    state: present
     block: |
-      Match Address {{ hostvars['deployer'].ansible_host }}
+      {% for node in groups['deployer'] %}
+      Match Address {{ hostvars[node].ansible_host }}
               PermitRootLogin yes
+
+      {% endfor %}
 
 - name: restart sshd
   systemd:
