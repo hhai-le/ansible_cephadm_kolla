@@ -11,15 +11,24 @@ linux:
     openstack1:
       ansible_host: 192.168.86.131
       ceph_ip: 10.0.2.1
+      labels:
+        - mon
+        - osd
     openstack2:
       ansible_host: 192.168.86.132
       ceph_ip: 10.0.2.2
+      labels:
+        - osd
     openstack3:  
       ansible_host: 192.168.86.133
       ceph_ip: 10.0.2.3
+      labels:
+        - osd
     openstack4:  
       ansible_host: 192.168.86.134
       ceph_ip: 10.0.2.4
+      labels:
+        - osd
   vars:
     ansible_become: true
     ansible_become_pass: Password

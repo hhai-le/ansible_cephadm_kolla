@@ -1,0 +1,5 @@
+{% for host in hosts %}
+{% for label in labels %}
+ceph orch host label add {{ hostvars[host].inventory_hostname }} {{ hostvars[host]["labels"].label }} 
+{% endfor %}
+{% endfor %}
