@@ -4,5 +4,8 @@
     name: ceph-common
     state: present
 
+- name: reset ssh connection
+  meta: reset_connection
+
 - name: add host to cluster
   shell: "{{ lookup('template', 'ceph_orch_host_add.sh.j2') }}"
