@@ -1,17 +1,17 @@
 ---
 # tasks file for ansible_openstack_ceph
-- include_tasks: docker.yml
-
-- include_tasks: sshd.yml
-  when: install_ceph|bool == true
-- include_tasks: netplan.yml
-  when: install_ceph|bool == true
-- include_tasks: common.yml
-  when: install_ceph|bool == true
-- include_tasks: cephadm.yml
-  when: install_ceph|bool == true and inventory_hostname in groups['deployer']
-- include_tasks: ceph.yml
-  when: install_ceph|bool == true and inventory_hostname in groups['deployer']
+#- include_tasks: docker.yml
+#
+#- include_tasks: sshd.yml
+#  when: install_ceph|bool == true
+#- include_tasks: netplan.yml
+#  when: install_ceph|bool == true
+#- include_tasks: common.yml
+#  when: install_ceph|bool == true
+#- include_tasks: cephadm.yml
+#  when: install_ceph|bool == true and inventory_hostname in groups['deployer']
+#- include_tasks: ceph.yml
+#  when: install_ceph|bool == true and inventory_hostname in groups['deployer']
 - include_tasks: ceph_label.yml
   when: install_ceph|bool == true and inventory_hostname in groups['deployer']
 
