@@ -1,5 +1,5 @@
-{% for host in groups["all"] %}
-{% for label in labels %}
-ceph orch host label add {{ hostvars[host].inventory_hostname }} {{ hostvars[host]["labels"].label }} 
+{% for host in groups["linux"] %}
+{% for item in host["labels"] %}
+ceph orch host label add {{ hostvars[host].inventory_hostname }} {{ item }} 
 {% endfor %}
 {% endfor %}
