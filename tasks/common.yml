@@ -11,14 +11,21 @@
     state: present
     create: true
 
-- name: force kill unattended-upgrades if running
-  shell: ps uax | grep "unattended-upgrade --download-only" | awk '{print $2}' | xargs kill -9
-  ignore_errors: true
+- name: disable unattended-upgrades
+  systemd:
+    name: unattended-upgrades
+    enabled: false
+    state: stopped
+
+#- name: force kill unattended-upgrades if running
+#  shell: ps uax | grep "unattended-upgr" | awk '{print $2}' | xargs kill -9
+#  ignore_errors: true
 
 - name: remove unattended-upgrade
   apt:
     name: unattended-upgrades
     state: absent
+
 
 - name: install chrony
   apt:
