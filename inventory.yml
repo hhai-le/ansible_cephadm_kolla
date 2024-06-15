@@ -15,9 +15,21 @@ ceph_mon:
 ceph_osd:
   hosts:
     openstack1:
+      device:
+        - /dev/sdb
+        - /dev/sdc
     openstack2:
+      device:
+        - /dev/sdb
+        - /dev/sdc
     openstack3:
+      device:
+        - /dev/sdb
+        - /dev/sdc
     openstack4:
+      device:
+        - /dev/sdb
+        - /dev/sdc
 linux:
   hosts:
     openstack1:
