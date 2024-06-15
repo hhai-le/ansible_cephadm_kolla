@@ -14,6 +14,8 @@
 #  when: install_ceph|bool == true and inventory_hostname in groups['deployer']
 - include_tasks: ceph_mon.yml
   when: install_ceph|bool == true and inventory_hostname in groups['deployer']
+- include_tasks: ceph_osd.yml
+  when: install_ceph|bool == true and inventory_hostname in groups['deployer']
 
 
 #- name: update storage NIC
