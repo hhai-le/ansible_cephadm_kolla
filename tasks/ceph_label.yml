@@ -1,2 +1,0 @@
-- name: add label to host
-  shell: "{{ lookup('template', 'ceph_orch_host_label_add.sh.j2') }}"

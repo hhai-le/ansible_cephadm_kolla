@@ -1,0 +1,7 @@
+#- name: add label to host
+#  shell: "{{ lookup('template', 'ceph_orch_host_label_add.sh.j2') }}"
+
+- name: deploy mon
+  template:
+    src: ceph_orch_daemon_add_mon.sh.j2
+    dest: /tmp/ceph_orch_daemon_add_mon.sh
