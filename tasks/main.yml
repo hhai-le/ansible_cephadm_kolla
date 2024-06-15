@@ -12,7 +12,7 @@
 #  when: install_ceph|bool == true and inventory_hostname in groups['deployer']
 #- include_tasks: ceph.yml
 #  when: install_ceph|bool == true and inventory_hostname in groups['deployer']
-- include_tasks: ceph_label.yml
+- include_tasks: ceph_mon.yml
   when: install_ceph|bool == true and inventory_hostname in groups['deployer']
 
 
