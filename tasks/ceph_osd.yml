@@ -1,7 +1,14 @@
-#- name: add label to host
-#  shell: "{{ lookup('template', 'ceph_orch_host_label_add.sh.j2') }}"
+- name: deploy osd
+  shell: "{{ lookup('template', 'ceph_orch_apply_osd.sh.j2') }}"
 
-- name: deploy mon
-  template:
-    src: ceph_orch_apply_osd.sh.j2
-    dest: /tmp/ceph_orch_apply_osd.sh
+
+- name: apply osd 
+  shell: |
+    ceph osd pool create volumes
+    ceph osd pool create images
+    ceph osd pool create backup
+    ceph osd pool create vms
+    rbd pool init volumes
+    rbd pool init images
+    rbd pool init backup
+    rbd pool init vms
