@@ -33,10 +33,9 @@
     update_cache: true
 
 - name: cephadm bootstrap
-  ignore_errors: true
   register: cephadm_result
   failed_when: "cephadm_result != 0 and 'already exists' not in cephadm_result.stderr"
-  changed_when: "'Bootstrap complete.' in cephadm_result.stdout"
+  changed_when: "'Bootstrap complete' in cephadm_result.stdout"
   shell: |
     cephadm bootstrap \
      --mon-ip "{{ mon_ip }}" \
