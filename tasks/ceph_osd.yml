@@ -1,14 +1,2 @@
 - name: deploy osd
   shell: "{{ lookup('template', 'ceph_orch_apply_osd.sh.j2') }}"
-
-
-- name: apply osd 
-  shell: |
-    ceph osd pool create volumes
-    ceph osd pool create images
-    ceph osd pool create backup
-    ceph osd pool create vms
-    rbd pool init volumes
-    rbd pool init images
-    rbd pool init backup
-    rbd pool init vms
