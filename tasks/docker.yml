@@ -39,7 +39,7 @@
     state: present
     update_cache: true
   with_items:
-    - docker
+    - docker-ce
     - docker-ce-cli
     - containerd.io
     - docker-buildx-plugin
