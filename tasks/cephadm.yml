@@ -34,14 +34,17 @@
 
 - name: cephadm bootstrap
   register: cephadm_result
-  failed_when: "cephadm_result != 0 and 'already exists' not in cephadm_result.stderr"
-  changed_when: "'Bootstrap complete' in cephadm_result.stdout"
+  failed_when: "cephadm_result.rc != 0 and 'already exists' not in cephadm_result.stderr"
+  changed_when: "cephadm_result.rc == 0 and 'Bootstrap complete' in cephadm_result.stdout"
   shell: |
     cephadm bootstrap \
      --mon-ip "{{ mon_ip }}" \
      --cluster-network "{{ cluster_network }}" \
      --initial-dashboard-user "{{ ceph_initial_dashboard_user }}" \
      --initial-dashboard-password "{{ ceph_initial_dashboard_password }}"
+
+- debug:
+    var: cephadm_result
 
 - name: generate update knowns_host and ceph.pub scripts
   template:
