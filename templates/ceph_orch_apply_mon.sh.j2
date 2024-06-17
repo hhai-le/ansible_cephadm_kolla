@@ -7,11 +7,11 @@ ceph orch daemon add mon {{ hostvars[host].inventory_hostname }}:{{ hostvars[hos
 {% endfor %}
 ceph orch apply mon --placement="
 {%- for host in groups["ceph_mon"] %}
-{{ hostvars[host].inventory_hostname -}} {{- ", " if not loop.last else "" -}}
+{{ hostvars[host].inventory_hostname -}} {{- "," if not loop.last else "" -}}
 {%- endfor -%}
 " --dry-run
 ceph orch apply mon --placement="
 {%- for host in groups["ceph_mon"] %}
-{{ hostvars[host].inventory_hostname -}} {{- ", " if not loop.last else "" -}}
+{{ hostvars[host].inventory_hostname -}} {{- "," if not loop.last else "" -}}
 {%- endfor -%}
 "
