@@ -1,5 +1,5 @@
 ---
-- name: apply osd 
+- name: create osd pool
   shell: |
     ceph osd pool create volumes
     ceph osd pool create images

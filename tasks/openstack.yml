@@ -38,3 +38,36 @@
 
 - name: update multinode 
   shell: "{{ lookup('template', 'openstack_multinode.sh.j2') }}"
+
+- name: edit globals.yml
+  template:
+    src: globals.yml.j2
+    dest: "{{ kolla_config }}/globals.yml"
+  
+- name: kolla-genpwd
+  shell: "{{kolla_directory}}/{{kolla_venv}}/bin/kolla-genpwd"
+
+- name: ceph.conf and keyring for openstack
+  file:
+    path: "{{ kolla_config }}/{{ item }}"
+    state: directory
+  with_items:
+    - "config"
+    - "config/nova"
+    - "config/glance"
+    - "config/cinder"
+    - "config/cinder/cinder-volume"
+    - "config/cinder/cinder-backup"
+
+- name: copying and editing keyring for ceph
+  shell: |
+    cp /etc/ceph/ceph.conf {{ kolla_config }}/config/cinder/
+    cp /etc/ceph/ceph.conf {{ kolla_config }}/config/nova/
+    cp /etc/ceph/ceph.conf {{ kolla_config }}/config/glance/
+    cp /etc/ceph/ceph.client.glance.keyring {{ kolla_config }}/config/glance/
+    cp /etc/ceph/ceph.client.nova.keyring {{ kolla_config }}/config/nova/
+    cp /etc/ceph/ceph.client.cinder.keyring {{ kolla_config }}/config/nova/
+    cp /etc/ceph/ceph.client.cinder.keyring {{ kolla_config }}/config/cinder/cinder-volume/
+    cp /etc/ceph/ceph.client.cinder.keyring {{ kolla_config }}/config/cinder/cinder-backup/
+    cp /etc/ceph/ceph.client.cinder-backup.keyring {{ kolla_config }}/config/cinder/cinder-backup/
+    find {{ kolla_config }}/config/ -type f | xargs sed -i $'s/\t//g'
