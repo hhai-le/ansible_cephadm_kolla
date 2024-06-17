@@ -9,3 +9,5 @@ ceph_initial_dashboard_password: "password"
 virtual_ip: 192.168.86.136
 virtual_domain: openstack.j.local
 NIC_storage: ens224
+kolla_directory: "/opt/kolla"
+kolla_config: "/etc/kolla"
