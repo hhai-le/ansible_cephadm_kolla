@@ -10,6 +10,7 @@
     - python3-selinux
     - python3-setuptools
     - python3-venv
+    - crudini
 
 - name: create venv for kolla
   shell: |
@@ -21,7 +22,17 @@
     {{kolla_directory}}/{{kolla_venv}}/bin/pip install -U pip 
     {{kolla_directory}}/{{kolla_venv}}/bin/pip install 'ansible-core>=2.14,<=2.16'
     {{kolla_directory}}/{{kolla_venv}}/bin/pip install git+https://opendev.org/openstack/kolla-ansible@stable/{{kolla_version}}
-    kolla-ansible install-deps
+    {{kolla_directory}}/{{kolla_venv}}/bin/kolla-ansible install-deps
     mkdir -p {{kolla_config}}
     cp -r {{kolla_directory}}/kolla-venv/share/kolla-ansible/etc_examples/kolla/* {{kolla_config}}
     cp {{kolla_directory}}/kolla-venv/share/kolla-ansible/ansible/inventory/multinode {{kolla_config}}
+
+- name: edit multinode file
+  shell: |
+    folder=("control" "network" "compute" "monitoring" "storage")
+    for i in ${folder[@]}
+    do 
+        for j in $(crudini --get /etc/kolla/multinode $i)
+        do crudini --del /etc/kolla/multinode $i $j
+        done
+    done
