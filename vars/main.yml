@@ -11,3 +11,5 @@ virtual_domain: openstack.j.local
 NIC_storage: ens224
 kolla_directory: "/opt/kolla"
 kolla_config: "/etc/kolla"
+kolla_venv: "kolla-venv"
+kolla_version: "2023.1"

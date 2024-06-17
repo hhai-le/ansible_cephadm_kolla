@@ -14,14 +14,13 @@
 - name: create venv for kolla
   shell: |
     mkdir -p {{kolla_directory}}
-    python3 -m venv {{kolla_directory}}/kolla-venv
+    python3 -m venv {{kolla_directory}}/{{kolla_venv}}
 
 - name: installing kolla-ansible
   shell: |
-    source {{kolla_directory}}/kolla-venv/bin/activate
-    pip install -U pip 
-    pip install 'ansible-core>=2.14,<=2.16'
-    pip install git+https://opendev.org/openstack/kolla-ansible@stable/2023.1
+    {{kolla_directory}}/{{kolla_venv}}/bin/pip install -U pip 
+    {{kolla_directory}}/{{kolla_venv}}/bin/pip install 'ansible-core>=2.14,<=2.16'
+    {{kolla_directory}}/{{kolla_venv}}/bin/pip install git+https://opendev.org/openstack/kolla-ansible@stable/{{kolla_version}}
     kolla-ansible install-deps
     mkdir -p {{kolla_config}}
     cp -r {{kolla_directory}}/kolla-venv/share/kolla-ansible/etc_examples/kolla/* {{kolla_config}}
