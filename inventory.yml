@@ -30,6 +30,27 @@ ceph_osd:
       device:
         - /dev/sdb
         - /dev/sdc
+openstack_control:
+  hosts:
+    openstack1:
+openstack_network:
+  hosts:
+    openstack1:
+openstack_compute:
+  hosts:
+    openstack1:
+    openstack2:
+    openstack3:
+    openstack4:
+openstack_monitoring:
+  hosts:
+    openstack1:
+openstack_storage:
+  hosts:
+    openstack1:
+    openstack2:
+    openstack3:
+    openstack4:
 linux:
   hosts:
     openstack1:

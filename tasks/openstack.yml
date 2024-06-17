@@ -27,12 +27,14 @@
     cp -r {{kolla_directory}}/kolla-venv/share/kolla-ansible/etc_examples/kolla/* {{kolla_config}}
     cp {{kolla_directory}}/kolla-venv/share/kolla-ansible/ansible/inventory/multinode {{kolla_config}}
 
-- name: edit multinode file
-  shell: |
-    folder=["control" "network" "compute" "monitoring" "storage"]
-    for i in ${folder[@]}
-    do 
-        for j in $(crudini --get /etc/kolla/multinode $i)
-        do crudini --del /etc/kolla/multinode $i $j
-        done
-    done
+- name: copy multinode_edit script to server
+  copy:
+    src: files/clear_multinode.sh
+    dest: /tmp/clear_multinode.sh
+    mode: '0755'
+
+- name: clear multinode 
+  shell: /bin/bash /tmp/clear_multinode.sh
+
+- name: update multinode 
+  shell: "{{ lookup('template', 'openstack_multinode.sh.j2') }}"
