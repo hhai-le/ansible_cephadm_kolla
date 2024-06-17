@@ -29,7 +29,7 @@
 
 - name: edit multinode file
   shell: |
-    folder=("control" "network" "compute" "monitoring" "storage")
+    folder=["control" "network" "compute" "monitoring" "storage"]
     for i in ${folder[@]}
     do 
         for j in $(crudini --get /etc/kolla/multinode $i)
