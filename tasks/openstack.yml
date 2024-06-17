@@ -18,7 +18,7 @@
 
 - name: installing kolla-ansible
   shell: |
-    source kolla-venv/bin/activate
+    source {{kolla_directory}}/kolla-venv/bin/activate
     pip install -U pip 
     pip install 'ansible-core>=2.14,<=2.16'
     pip install git+https://opendev.org/openstack/kolla-ansible@stable/2023.1

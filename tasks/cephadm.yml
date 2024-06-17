@@ -43,9 +43,6 @@
      --initial-dashboard-user "{{ ceph_initial_dashboard_user }}" \
      --initial-dashboard-password "{{ ceph_initial_dashboard_password }}"
 
-- debug:
-    var: cephadm_result
-
 - name: generate update knowns_host and ceph.pub scripts
   template:
     src: ceph_pub.sh.j2
