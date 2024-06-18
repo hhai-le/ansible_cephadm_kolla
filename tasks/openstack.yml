@@ -15,16 +15,13 @@
 - name: create venv for kolla
   shell: "mkdir -p {{kolla_directory}} && cd {{kolla_directory}} && python3 -m venv {{kolla_venv}}"
 
-- name: installing kolla-ansible
-  shell: |
-    . {{kolla_directory}}/{{kolla_venv}}/bin/activate
-    {{kolla_directory}}/{{kolla_venv}}/bin/pip install -U pip 
-    {{kolla_directory}}/{{kolla_venv}}/bin/pip install 'ansible-core>=2.14,<=2.16'
-    {{kolla_directory}}/{{kolla_venv}}/bin/pip install git+https://opendev.org/openstack/kolla-ansible@master
-    {{kolla_directory}}/{{kolla_venv}}/bin/kolla-ansible install-deps
-    mkdir -p {{kolla_config}}
-    cp -r {{kolla_directory}}/kolla-venv/share/kolla-ansible/etc_examples/kolla/* {{kolla_config}}
-    cp {{kolla_directory}}/kolla-venv/share/kolla-ansible/ansible/inventory/multinode {{kolla_config}}
+- name: copying install kolla script
+  template:
+    src: install_kolla.sh.j2
+    dest: /tmp/install_kolla.sh
+
+- name: running install kolla script
+  shell: /bin/bash /tmp/install_kolla.sh
 
 - name: copy multinode_edit script to server
   copy:
@@ -58,19 +55,14 @@
     - "config/cinder/cinder-volume"
     - "config/cinder/cinder-backup"
 
-- name: copying and editing keyring for ceph
-  shell: |
-    cp /etc/ceph/ceph.conf {{ kolla_config }}/config/cinder/
-    cp /etc/ceph/ceph.conf {{ kolla_config }}/config/nova/
-    cp /etc/ceph/ceph.conf {{ kolla_config }}/config/glance/
-    cp /etc/ceph/ceph.client.glance.keyring {{ kolla_config }}/config/glance/
-    cp /etc/ceph/ceph.client.nova.keyring {{ kolla_config }}/config/nova/
-    cp /etc/ceph/ceph.client.cinder.keyring {{ kolla_config }}/config/nova/
-    cp /etc/ceph/ceph.client.cinder.keyring {{ kolla_config }}/config/cinder/cinder-volume/
-    cp /etc/ceph/ceph.client.cinder.keyring {{ kolla_config }}/config/cinder/cinder-backup/
-    cp /etc/ceph/ceph.client.cinder-backup.keyring {{ kolla_config }}/config/cinder/cinder-backup/
-    find {{ kolla_config }}/config/ -type f | xargs sed -i $'s/\t//g'
+- name: copying keyring for ceph
+  template: 
+    src: keyring.sh.j2
+    dest: /tmp/keyring.sh
 
+- name: running ceph keyring copy script
+  shell: /bin/bash /tmp/keyring.sh
+  
 #- name: kolla bootstrap-servers  
 #  shell: ". {{kolla_directory}}/{{kolla_venv}}/bin/activate && {{kolla_directory}}/{{kolla_venv}}/bin/kolla-ansible -i {{ kolla_config }}/multinode bootstrap-servers"
 #

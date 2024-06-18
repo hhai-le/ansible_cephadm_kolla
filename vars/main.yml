@@ -12,6 +12,7 @@ NIC_storage: ens224
 kolla_directory: "/opt/kolla"
 kolla_config: "/etc/kolla"
 kolla_venv: "kolla-venv"
-kolla_version: "2023.1"
+#kolla_version: "2023.1"
+kolla_version: "master"
 NIC_mgmt: "ens160"
 NIC_external: "ens192"
