@@ -9,3 +9,9 @@ cp /etc/ceph/ceph.client.cinder.keyring {{ kolla_config }}/config/cinder/cinder-
 cp /etc/ceph/ceph.client.cinder.keyring {{ kolla_config }}/config/cinder/cinder-backup/
 cp /etc/ceph/ceph.client.cinder-backup.keyring {{ kolla_config }}/config/cinder/cinder-backup/
 find {{ kolla_config }}/config/ -type f | xargs sed -i $'s/\t//g'
+
+{% for node in groups["non_deployer"] %}
+ssh-keygen -R {{ hostvars[node].inventory_hostname }}
+ssh-keyscan -H {{ hostvars[node].inventory_hostname }} >> /root/.ssh/known_hosts
+scp scp -r /etc/ceph/ root@{{ hostvars[node].inventory_hostname }}:/etc/
+{% endfor %}

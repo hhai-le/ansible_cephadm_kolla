@@ -62,7 +62,8 @@
 
 - name: running ceph keyring copy script
   shell: /bin/bash /tmp/keyring.sh
-  
+
+
 #- name: kolla bootstrap-servers  
 #  shell: ". {{kolla_directory}}/{{kolla_venv}}/bin/activate && {{kolla_directory}}/{{kolla_venv}}/bin/kolla-ansible -i {{ kolla_config }}/multinode bootstrap-servers"
 #
