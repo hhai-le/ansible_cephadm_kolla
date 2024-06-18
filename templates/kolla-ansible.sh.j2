@@ -1,0 +1,4 @@
+#!/bin/bash
+
+source {{kolla_directory}}/{{kolla_venv}}/bin/activate 
+{{kolla_directory}}/{{kolla_venv}}/bin/kolla-ansible -i {{ kolla_config }}/multinode $1 -vvv

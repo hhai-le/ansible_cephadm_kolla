@@ -63,12 +63,16 @@
 - name: running ceph keyring copy script
   shell: /bin/bash /tmp/keyring.sh
 
+- name: make kolla script runner
+  template: 
+    src: kolla-ansible.sh.j2
+    dest: /tmp/kolla-ansible.sh
 
 - name: kolla bootstrap-servers  
-  shell: "source {{kolla_directory}}/{{kolla_venv}}/bin/activate && {{kolla_directory}}/{{kolla_venv}}/bin/kolla-ansible -i {{ kolla_config }}/multinode bootstrap-servers -vvv"
+  shell: "/bin/bash /tmp/kolla-ansible.sh bootstrap-servers"
 
 - name: kolla prechecks
-  shell: "source {{kolla_directory}}/{{kolla_venv}}/bin/activate && {{kolla_directory}}/{{kolla_venv}}/bin/kolla-ansible -i {{ kolla_config }}/multinode prechecks -vvv"
+  shell: "/bin/bash /tmp/kolla-ansible.sh prechecks -vvv"
 
 #- name: kolla deploy
 #  shell: ". {{kolla_directory}}/{{kolla_venv}}/bin/activate && {{kolla_directory}}/{{kolla_venv}}/bin/kolla-ansible -i {{ kolla_config }}/multinode deploy"
