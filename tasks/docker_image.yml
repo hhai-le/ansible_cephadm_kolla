@@ -6,11 +6,23 @@
 
 - name: copy docker images to servers
   copy:
-    src: files/*
+    src: "{{ item }}"
     dest: /opt/images
+  with_fileglob:
+    - "files/*tar"
+
+#- find: paths="files/*tar" recurse=yes patterns="*tar"
+#  register: files_to_copy
+#- copy: 
+#  src: "{{ item.path }}" 
+#  dest: //opt/images
+#  owner: root
+#  mode: 0775
+#  with_items: 
+#    - "{{ files_to_copy.files }}"
 
 - name: import images
   shell: "for i in $(ls *tar); do docker load --input $i; done"
-  agrs:
+  args:
     chdir: /opt/images
 
