@@ -71,9 +71,9 @@
     cp /etc/ceph/ceph.client.cinder-backup.keyring {{ kolla_config }}/config/cinder/cinder-backup/
     find {{ kolla_config }}/config/ -type f | xargs sed -i $'s/\t//g'
 
-- name: kolla bootstrap-servers  
-  shell: ". {{kolla_directory}}/{{kolla_venv}}/bin/activate && {{kolla_directory}}/{{kolla_venv}}/bin/kolla-ansible -i {{ kolla_config }}/multinode bootstrap-servers"
-
+#- name: kolla bootstrap-servers  
+#  shell: ". {{kolla_directory}}/{{kolla_venv}}/bin/activate && {{kolla_directory}}/{{kolla_venv}}/bin/kolla-ansible -i {{ kolla_config }}/multinode bootstrap-servers"
+#
 #- name: kolla prechecks
 #  shell: ". {{kolla_directory}}/{{kolla_venv}}/bin/activate && {{kolla_directory}}/{{kolla_venv}}/bin/kolla-ansible -i {{ kolla_config }}/multinode prechecks"
 #
