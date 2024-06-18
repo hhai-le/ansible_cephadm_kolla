@@ -15,17 +15,17 @@
 - name: create venv for kolla
   shell: "mkdir -p {{kolla_directory}} && cd {{kolla_directory}} && python3 -m venv {{kolla_venv}}"
 
-#- name: installing kolla-ansible
-#  shell: |
-#    . {{kolla_directory}}/{{kolla_venv}}/bin/active
-#    {{kolla_directory}}/{{kolla_venv}}/bin/pip install -U pip 
-#    {{kolla_directory}}/{{kolla_venv}}/bin/pip install 'ansible-core>=2.14,<=2.16'
-#    {{kolla_directory}}/{{kolla_venv}}/bin/pip install git+https://opendev.org/openstack/kolla-ansible@stable/{{kolla_version}}
-#    {{kolla_directory}}/{{kolla_venv}}/bin/kolla-ansible install-deps
-#    mkdir -p {{kolla_config}}
-#    cp -r {{kolla_directory}}/kolla-venv/share/kolla-ansible/etc_examples/kolla/* {{kolla_config}}
-#    cp {{kolla_directory}}/kolla-venv/share/kolla-ansible/ansible/inventory/multinode {{kolla_config}}
-#
+- name: installing kolla-ansible
+  shell: |
+    . {{kolla_directory}}/{{kolla_venv}}/bin/activate
+    {{kolla_directory}}/{{kolla_venv}}/bin/pip install -U pip 
+    {{kolla_directory}}/{{kolla_venv}}/bin/pip install 'ansible-core>=2.14,<=2.16'
+    {{kolla_directory}}/{{kolla_venv}}/bin/pip install git+https://opendev.org/openstack/kolla-ansible@stable/{{kolla_version}}
+    {{kolla_directory}}/{{kolla_venv}}/bin/kolla-ansible install-deps
+    mkdir -p {{kolla_config}}
+    cp -r {{kolla_directory}}/kolla-venv/share/kolla-ansible/etc_examples/kolla/* {{kolla_config}}
+    cp {{kolla_directory}}/kolla-venv/share/kolla-ansible/ansible/inventory/multinode {{kolla_config}}
+
 #- name: copy multinode_edit script to server
 #  copy:
 #    src: files/clear_multinode.sh
