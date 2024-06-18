@@ -1,0 +1,16 @@
+---
+- name: creating /opt/images for images
+  file:
+    path: /opt/images
+    state: directory
+
+- name: copy docker images to servers
+  copy:
+    src: files/*
+    dest: /opt/images
+
+- name: import images
+  shell: "for i in $(ls *tar); do docker load --input $i; done"
+  agrs:
+    chdir: /opt/images
+

@@ -20,7 +20,7 @@
     . {{kolla_directory}}/{{kolla_venv}}/bin/activate
     {{kolla_directory}}/{{kolla_venv}}/bin/pip install -U pip 
     {{kolla_directory}}/{{kolla_venv}}/bin/pip install 'ansible-core>=2.14,<=2.16'
-    {{kolla_directory}}/{{kolla_venv}}/bin/pip install git+https://opendev.org/openstack/kolla-ansible@stable/{{kolla_version}}
+    {{kolla_directory}}/{{kolla_venv}}/bin/pip install git+https://opendev.org/openstack/kolla-ansible@master
     {{kolla_directory}}/{{kolla_venv}}/bin/kolla-ansible install-deps
     mkdir -p {{kolla_config}}
     cp -r {{kolla_directory}}/kolla-venv/share/kolla-ansible/etc_examples/kolla/* {{kolla_config}}
