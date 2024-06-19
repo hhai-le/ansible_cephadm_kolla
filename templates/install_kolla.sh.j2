@@ -1,10 +1,10 @@
 #!/bin/bash
 
-source {{ kolla_directory }}/{{ kolla_venv }}/bin/activate
-{{ kolla_directory }}/{{ kolla_venv }}/bin/pip install -U pip 
-{{ kolla_directory }}/{{ kolla_venv }}/bin/pip install 'ansible-core>=2.14,<=2.16'
-{{ kolla_directory }}/{{ kolla_venv }}/bin/pip install git+https://opendev.org/openstack/kolla-ansible@{{ kolla_version }}
+#source {{ kolla_directory }}/{{ kolla_venv }}/bin/activate
+#{{ kolla_directory }}/{{ kolla_venv }}/bin/pip install -U pip 
+#{{ kolla_directory }}/{{ kolla_venv }}/bin/pip install 'ansible-core>=2.14,<=2.16'
+#{{ kolla_directory }}/{{ kolla_venv }}/bin/pip install git+https://opendev.org/openstack/kolla-ansible@{{ kolla_version }}
 #{{ kolla_directory }}/{{ kolla_venv }}/bin/kolla-ansible install-deps
-#mkdir -p {{ kolla_config }}
-#cp -r {{ kolla_directory }}/kolla-venv/share/kolla-ansible/etc_examples/kolla/* {{ kolla_config }}
-#cp {{ kolla_directory }}/kolla-venv/share/kolla-ansible/ansible/inventory/multinode {{ kolla_config }}
+mkdir -p {{ kolla_config }}
+cp -r {{ kolla_directory }}/kolla-venv/share/kolla-ansible/etc_examples/kolla/* {{ kolla_config }}
+cp {{ kolla_directory }}/kolla-venv/share/kolla-ansible/ansible/inventory/multinode {{ kolla_config }}

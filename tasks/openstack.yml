@@ -32,18 +32,18 @@
     group: root
     mode: '0755'
 
-
 #- name: create venv for kolla
 #  shell: "mkdir -p {{kolla_directory}} && cd {{kolla_directory}} && python3 -m venv {{kolla_venv}}"
 #
-#- name: copying install kolla script
-#  template:
-#    src: install_kolla.sh.j2
-#    dest: /tmp/install_kolla.sh
-#
-#- name: running install kolla script
-#  shell: /bin/bash /tmp/install_kolla.sh
-#
+
+- name: copying install kolla script
+  template:
+    src: install_kolla.sh.j2
+    dest: /tmp/install_kolla.sh
+
+- name: running install kolla script
+  shell: /bin/bash /tmp/install_kolla.sh
+
 - name: copy multinode_edit script to server
   copy:
     src: files/clear_multinode.sh
