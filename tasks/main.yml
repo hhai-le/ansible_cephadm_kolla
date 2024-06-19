@@ -1,25 +1,25 @@
 ---
-# tasks file for ansible_openstack_ceph
-- include_tasks: common.yml
-#- include_tasks: docker.yml
-#- name: reset ssh connection
-#  meta: reset_connection
-#- name: copy docker images
-#  include_tasks: docker_image.yml
-- include_tasks: sshd.yml
-  when: install_ceph|bool == true
-- include_tasks: netplan.yml
-  when: install_ceph|bool == true
-- include_tasks: cephadm.yml
-  when: install_ceph|bool == true and inventory_hostname in groups['deployer']
-- include_tasks: ceph.yml
-  when: install_ceph|bool == true and inventory_hostname in groups['deployer']
-- include_tasks: ceph_mon.yml
-  when: install_ceph|bool == true and inventory_hostname in groups['deployer']
-- include_tasks: ceph_osd.yml
-  when: install_ceph|bool == true and inventory_hostname in groups['deployer']
-- include_tasks: ceph_pool_keyring.yml
-  when: install_ceph|bool == true and inventory_hostname in groups['deployer']
+## tasks file for ansible_openstack_ceph
+#- include_tasks: common.yml
+##- include_tasks: docker.yml
+##- name: reset ssh connection
+##  meta: reset_connection
+##- name: copy docker images
+##  include_tasks: docker_image.yml
+#- include_tasks: sshd.yml
+#  when: install_ceph|bool == true
+#- include_tasks: netplan.yml
+#  when: install_ceph|bool == true
+#- include_tasks: cephadm.yml
+#  when: install_ceph|bool == true and inventory_hostname in groups['deployer']
+#- include_tasks: ceph.yml
+#  when: install_ceph|bool == true and inventory_hostname in groups['deployer']
+#- include_tasks: ceph_mon.yml
+#  when: install_ceph|bool == true and inventory_hostname in groups['deployer']
+#- include_tasks: ceph_osd.yml
+#  when: install_ceph|bool == true and inventory_hostname in groups['deployer']
+#- include_tasks: ceph_pool_keyring.yml
+#  when: install_ceph|bool == true and inventory_hostname in groups['deployer']
 - include_tasks: openstack.yml
   when: inventory_hostname in groups['deployer']
 

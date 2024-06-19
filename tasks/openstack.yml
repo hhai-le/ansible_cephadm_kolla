@@ -1,28 +1,44 @@
-- name: install requirement packages for kolla-ansible
-  apt:
-    name: "{{ item }}"
-    state: present
-  with_items:
-    - python3-dev
-    - libffi-dev
-    - gcc
-    - libssl-dev
-    - python3-selinux
-    - python3-setuptools
-    - python3-venv
-    - crudini
+---
+#- name: install requirement packages for kolla-ansible
+#  apt:
+#    name: "{{ item }}"
+#    state: present
+#  with_items:
+#    - python3-dev
+#    - libffi-dev
+#    - gcc
+#    - libssl-dev
+#    - python3-selinux
+#    - python3-setuptools
+#    - python3-venv
+#    - crudini
+#
+- name: copy ansible collections for kolla
+  unarchive:
+    src: ansible_collections.tar
+    dest: root/.ansible/collections
+    owner: root
+    group: root
+    mode: '0755'
 
-- name: create venv for kolla
-  shell: "mkdir -p {{kolla_directory}} && cd {{kolla_directory}} && python3 -m venv {{kolla_venv}}"
+- name: copy kolla-venv
+  unarchive:
+    src: files/kolla-ansible.tar
+    dest: /opt/kolla
+    owner: root
+    group: root
 
-- name: copying install kolla script
-  template:
-    src: install_kolla.sh.j2
-    dest: /tmp/install_kolla.sh
-
-- name: running install kolla script
-  shell: /bin/bash /tmp/install_kolla.sh
-
+#- name: create venv for kolla
+#  shell: "mkdir -p {{kolla_directory}} && cd {{kolla_directory}} && python3 -m venv {{kolla_venv}}"
+#
+#- name: copying install kolla script
+#  template:
+#    src: install_kolla.sh.j2
+#    dest: /tmp/install_kolla.sh
+#
+#- name: running install kolla script
+#  shell: /bin/bash /tmp/install_kolla.sh
+#
 #- name: copy multinode_edit script to server
 #  copy:
 #    src: files/clear_multinode.sh
