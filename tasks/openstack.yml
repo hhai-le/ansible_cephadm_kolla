@@ -16,7 +16,7 @@
 
 - name: copy kolla-venv
   unarchive:
-    src: files/kolla-ansible.tar
+    src: kolla-ansible.tar
     dest: /opt/kolla
     owner: root
     group: root
@@ -24,7 +24,7 @@
 - name: copy ansible collections for kolla
   unarchive:
     src: ansible_collections.tar
-    dest: root/.ansible/collections
+    dest: /root/
     owner: root
     group: root
     mode: '0755'
