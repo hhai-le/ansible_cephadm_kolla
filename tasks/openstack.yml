@@ -1,18 +1,18 @@
 ---
-#- name: install requirement packages for kolla-ansible
-#  apt:
-#    name: "{{ item }}"
-#    state: present
-#  with_items:
-#    - python3-dev
-#    - libffi-dev
-#    - gcc
-#    - libssl-dev
-#    - python3-selinux
-#    - python3-setuptools
-#    - python3-venv
-#    - crudini
-#
+- name: install requirement packages for kolla-ansible
+  apt:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - python3-dev
+    - libffi-dev
+    - gcc
+    - libssl-dev
+    - python3-selinux
+    - python3-setuptools
+    - python3-venv
+    - crudini
+
 
 - name: create venv for kolla
   shell: "mkdir -p {{kolla_directory}}"
@@ -44,59 +44,59 @@
 #- name: running install kolla script
 #  shell: /bin/bash /tmp/install_kolla.sh
 #
-#- name: copy multinode_edit script to server
-#  copy:
-#    src: files/clear_multinode.sh
-#    dest: /tmp/clear_multinode.sh
-#    mode: '0755'
-#
-#- name: clear multinode 
-#  shell: /bin/bash /tmp/clear_multinode.sh
-#
-#- name: update multinode 
-#  shell: "{{ lookup('template', 'openstack_multinode.sh.j2') }}"
-#
-#- name: edit globals.yml
-#  template:
-#    src: globals.yml.j2
-#    dest: "{{ kolla_config }}/globals.yml"
-#  
-#- name: kolla-genpwd
-#  shell: "{{kolla_directory}}/{{kolla_venv}}/bin/kolla-genpwd"
-#
-#- name: ceph.conf and keyring for openstack
-#  file:
-#    path: "{{ kolla_config }}/{{ item }}"
-#    state: directory
-#  with_items:
-#    - "config"
-#    - "config/nova"
-#    - "config/glance"
-#    - "config/cinder"
-#    - "config/cinder/cinder-volume"
-#    - "config/cinder/cinder-backup"
-#
-#- name: copying keyring for ceph
-#  template: 
-#    src: keyring.sh.j2
-#    dest: /tmp/keyring.sh
-#
-#- name: running ceph keyring copy script
-#  shell: /bin/bash /tmp/keyring.sh
-#
-#- name: make kolla script runner
-#  template: 
-#    src: kolla-ansible.sh.j2
-#    dest: /tmp/kolla-ansible.sh
-#
-#- name: kolla bootstrap-servers  
-#  shell: "/bin/bash /tmp/kolla-ansible.sh bootstrap-servers"
-#
-#- name: kolla prechecks
-#  shell: "/bin/bash /tmp/kolla-ansible.sh prechecks"
-#
-#- name: kolla deploy
-#  shell: "/bin/bash /tmp/kolla-ansible.sh deploy"
-#
-##- name: kolla post-deploy
-##  shell: "/bin/bash /tmp/kolla-ansible.sh post-deploy"
+- name: copy multinode_edit script to server
+  copy:
+    src: files/clear_multinode.sh
+    dest: /tmp/clear_multinode.sh
+    mode: '0755'
+
+- name: clear multinode 
+  shell: /bin/bash /tmp/clear_multinode.sh
+
+- name: update multinode 
+  shell: "{{ lookup('template', 'openstack_multinode.sh.j2') }}"
+
+- name: edit globals.yml
+  template:
+    src: globals.yml.j2
+    dest: "{{ kolla_config }}/globals.yml"
+  
+- name: kolla-genpwd
+  shell: "{{kolla_directory}}/{{kolla_venv}}/bin/kolla-genpwd"
+
+- name: ceph.conf and keyring for openstack
+  file:
+    path: "{{ kolla_config }}/{{ item }}"
+    state: directory
+  with_items:
+    - "config"
+    - "config/nova"
+    - "config/glance"
+    - "config/cinder"
+    - "config/cinder/cinder-volume"
+    - "config/cinder/cinder-backup"
+
+- name: copying keyring for ceph
+  template: 
+    src: keyring.sh.j2
+    dest: /tmp/keyring.sh
+
+- name: running ceph keyring copy script
+  shell: /bin/bash /tmp/keyring.sh
+
+- name: make kolla script runner
+  template: 
+    src: kolla-ansible.sh.j2
+    dest: /tmp/kolla-ansible.sh
+
+- name: kolla bootstrap-servers  
+  shell: "/bin/bash /tmp/kolla-ansible.sh bootstrap-servers"
+
+- name: kolla prechecks
+  shell: "/bin/bash /tmp/kolla-ansible.sh prechecks"
+
+- name: kolla deploy
+  shell: "/bin/bash /tmp/kolla-ansible.sh deploy"
+
+#- name: kolla post-deploy
+#  shell: "/bin/bash /tmp/kolla-ansible.sh post-deploy"
