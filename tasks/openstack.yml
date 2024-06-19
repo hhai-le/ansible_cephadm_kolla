@@ -13,6 +13,14 @@
 #    - python3-venv
 #    - crudini
 #
+
+- name: copy kolla-venv
+  unarchive:
+    src: files/kolla-ansible.tar
+    dest: /opt/kolla
+    owner: root
+    group: root
+
 - name: copy ansible collections for kolla
   unarchive:
     src: ansible_collections.tar
@@ -21,12 +29,6 @@
     group: root
     mode: '0755'
 
-- name: copy kolla-venv
-  unarchive:
-    src: files/kolla-ansible.tar
-    dest: /opt/kolla
-    owner: root
-    group: root
 
 #- name: create venv for kolla
 #  shell: "mkdir -p {{kolla_directory}} && cd {{kolla_directory}} && python3 -m venv {{kolla_venv}}"
