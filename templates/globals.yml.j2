@@ -29,31 +29,3 @@ cinder_backend_ceph: "yes"
 nova_backend_ceph: "yes"
 nova_compute_virt_type: "kvm"
 neutron_ovn_distributed_fip: "yes"
-#enable_octavia: "yes"
-#octavia_auto_configure: yes
-#octavia_amp_flavor:
-#  name: "amphora"
-#  is_public: no
-#  vcpus: 1
-#  ram: 1024
-#  disk: 10
-#octavia_certs_country: US
-#octavia_certs_state: California
-#octavia_certs_organization: OpenStack
-#octavia_certs_organizational_unit: Octavia
-#octavia_amp_network:
-#  name: public-network
-#  shared: true
-#  provider_network_type: flat
-#  provider_physical_network: physnet1
-#  external: true
-#  subnet:
-#    name: public-network-subnet
-#    cidr: "{{ octavia_amp_network_cidr }}"
-#    gateway_ip: 10.196.24.1
-#    allocation_pool_start: 10.196.24.192
-#    allocation_pool_end: 10.196.24.199
-#    enable_dhcp: yes
-#octavia_amp_network_cidr: 10.196.24.0/24
-#octavia_amp_image_tag: "amphora"
-#octavia_loadbalancer_topology: "ACTIVE_STANDBY"
