@@ -1,4 +1,5 @@
 #!/bin/bash
+find /etc/ceph/ -type f | xargs sed -i $'s/\t//g'
 cp /etc/ceph/ceph.conf {{ kolla_config }}/config/cinder/
 cp /etc/ceph/ceph.conf {{ kolla_config }}/config/nova/
 cp /etc/ceph/ceph.conf {{ kolla_config }}/config/glance/
@@ -8,7 +9,6 @@ cp /etc/ceph/ceph.client.cinder.keyring {{ kolla_config }}/config/nova/
 cp /etc/ceph/ceph.client.cinder.keyring {{ kolla_config }}/config/cinder/cinder-volume/
 cp /etc/ceph/ceph.client.cinder.keyring {{ kolla_config }}/config/cinder/cinder-backup/
 cp /etc/ceph/ceph.client.cinder-backup.keyring {{ kolla_config }}/config/cinder/cinder-backup/
-find /etc/ceph/ -type f | xargs sed -i $'s/\t//g'
 
 {% for node in groups["non_deployer"] %}
 ssh-keygen -R {{ hostvars[node].inventory_hostname }}
