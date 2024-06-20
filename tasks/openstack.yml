@@ -12,7 +12,7 @@
     - python3-setuptools
     - python3-venv
     - crudini
-
+    - python3-openstackclient
 
 - name: create venv for kolla
   shell: "mkdir -p {{kolla_directory}}"
