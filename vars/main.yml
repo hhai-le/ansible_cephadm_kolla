@@ -16,4 +16,4 @@ kolla_version: "master"
 NIC_mgmt: "ens160"
 NIC_external: "ens192"
 NIC_storage: ens224
-#NIC_tunnel: ""
+NIC_tunnel: "ens256"
