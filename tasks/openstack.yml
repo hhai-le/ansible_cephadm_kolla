@@ -98,5 +98,5 @@
 - name: kolla deploy
   shell: "/bin/bash /tmp/kolla-ansible.sh deploy"
 
-#- name: kolla post-deploy
-#  shell: "/bin/bash /tmp/kolla-ansible.sh post-deploy"
+- name: kolla post-deploy
+  shell: "/bin/bash /tmp/kolla-ansible.sh post-deploy"
