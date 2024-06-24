@@ -26,20 +26,3 @@
   when: inventory_hostname in groups['deployer']
 - include_tasks: openstack_install.yml
   when: inventory_hostname in groups['deployer']
-
-
-#- name: update storage NIC
-#- name: cephadm bootstrap
-#- name: update ceph.pub for all hosts
-#- name: ceph-common
-#- name: add other hosts to cluster
-#- name: apply MON service
-#- name: add label for hosts
-#- name: apply osd
-#- name: create rbd pool
-#- name: create keyring
-#- name: install kolla-ansible
-#- name: init kolla config
-#- name: globals.yml
-#- name: kolla-ansible bootstrap, precheck, deploy
-#
