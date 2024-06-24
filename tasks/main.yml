@@ -24,8 +24,8 @@
   when: inventory_hostname in groups['deployer']
 - include_tasks: openstack_preinstall.yml
   when: inventory_hostname in groups['deployer']
-- include_tasks: openstack_install.yml
-  when: inventory_hostname in groups['deployer']
+#- include_tasks: openstack_install.yml
+#  when: inventory_hostname in groups['deployer']
 
 
 #- name: update storage NIC
