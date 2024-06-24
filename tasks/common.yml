@@ -31,4 +31,3 @@
   apt:
     name: chrony
     state: present
-

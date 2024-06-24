@@ -15,3 +15,12 @@
   systemd:
     name: sshd
     state: restarted
+
+- name: generate update knowns_host
+  template:
+    src: ssh_keyscan.sh.j2
+    dest: /tmp/ssh_keyscan.sh
+    mode: '0755'
+
+- name: run update knowns_host
+  shell: /bin/bash /tmp/ssh_keyscan.sh
