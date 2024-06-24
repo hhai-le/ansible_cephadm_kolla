@@ -1,1 +1,66 @@
-deployer:  hosts:    openstack1:non_deployer:  hosts:    openstack2:    openstack3:ceph_mon:  hosts:    openstack1:    openstack2:    openstack3:ceph_osd:  hosts:    openstack1:      device:        - /dev/sdb        - /dev/sdc    openstack2:      device:        - /dev/sdb        - /dev/sdc    openstack3:      device:        - /dev/sdb        - /dev/sdcopenstack_control:  hosts:    openstack1:openstack_network:  hosts:    openstack1:openstack_compute:  hosts:    openstack1:    openstack2:    openstack3:openstack_monitoring:  hosts:    openstack1:openstack_storage:  hosts:    openstack1:    openstack2:    openstack3:linux:  hosts:    openstack1:      ansible_host: 192.168.86.131      ceph_ip: 10.0.2.1      tunnel_ip: 10.0.10.1    openstack2:      ansible_host: 192.168.86.132      ceph_ip: 10.0.2.2      tunnel_ip: 10.0.10.2    openstack3:        ansible_host: 192.168.86.133      ceph_ip: 10.0.2.3      tunnel_ip: 10.0.10.3  vars:    ansible_become: true    ansible_become_pass: Password    ansible_ssh_retries: 10    ansible_ssh_extra_args: -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null    ansible_ssh_pass: Password    ansible_user: linuxadmin
+deployer:
+  hosts:
+    openstack1:
+non_deployer:
+  hosts:
+    openstack2:
+    openstack3:
+ceph_mon:
+  hosts:
+    openstack1:
+    openstack2:
+    openstack3:
+ceph_osd:
+  hosts:
+    openstack1:
+      device:
+        - /dev/sdb
+        - /dev/sdc
+    openstack2:
+      device:
+        - /dev/sdb
+        - /dev/sdc
+    openstack3:
+      device:
+        - /dev/sdb
+        - /dev/sdc
+openstack_control:
+  hosts:
+    openstack1:
+openstack_network:
+  hosts:
+    openstack1:
+openstack_compute:
+  hosts:
+    openstack1:
+    openstack2:
+    openstack3:
+openstack_monitoring:
+  hosts:
+    openstack1:
+openstack_storage:
+  hosts:
+    openstack1:
+    openstack2:
+    openstack3:
+linux:
+  hosts:
+    openstack1:
+      ansible_host: 192.168.86.131
+      ceph_ip: 10.0.2.1
+      tunnel_ip: 10.0.10.1
+    openstack2:
+      ansible_host: 192.168.86.132
+      ceph_ip: 10.0.2.2
+      tunnel_ip: 10.0.10.2
+    openstack3:  
+      ansible_host: 192.168.86.133
+      ceph_ip: 10.0.2.3
+      tunnel_ip: 10.0.10.3
+  vars:
+    ansible_become: true
+    ansible_become_pass: Password
+    ansible_ssh_retries: 10
+    ansible_ssh_extra_args: -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null
+    ansible_ssh_pass: Password
+    ansible_user: linuxadmin
