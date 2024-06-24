@@ -27,22 +27,3 @@
 - name: kolla-genpwd
   shell: "{{kolla_directory}}/{{kolla_venv}}/bin/kolla-genpwd"
 
-#- name: ceph.conf and keyring for openstack
-#  file:
-#    path: "{{ kolla_config }}/{{ item }}"
-#    state: directory
-#  with_items:
-#    - "config"
-#    - "config/nova"
-#    - "config/glance"
-#    - "config/cinder"
-#    - "config/cinder/cinder-volume"
-#    - "config/cinder/cinder-backup"
-#
-#- name: copying keyring for ceph
-#  template: 
-#    src: keyring.sh.j2
-#    dest: /tmp/keyring.sh
-#
-#- name: running ceph keyring copy script
-#  shell: /bin/bash /tmp/keyring.sh
