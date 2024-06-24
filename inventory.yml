@@ -5,13 +5,11 @@ non_deployer:
   hosts:
     openstack2:
     openstack3:
-    openstack4:
 ceph_mon:
   hosts:
     openstack1:
     openstack2:
     openstack3:
-    openstack4:
 ceph_osd:
   hosts:
     openstack1:
@@ -26,10 +24,6 @@ ceph_osd:
       device:
         - /dev/sdb
         - /dev/sdc
-    openstack4:
-      device:
-        - /dev/sdb
-        - /dev/sdc
 openstack_control:
   hosts:
     openstack1:
@@ -41,7 +35,6 @@ openstack_compute:
     openstack1:
     openstack2:
     openstack3:
-    openstack4:
 openstack_monitoring:
   hosts:
     openstack1:
@@ -50,7 +43,6 @@ openstack_storage:
     openstack1:
     openstack2:
     openstack3:
-    openstack4:
 linux:
   hosts:
     openstack1:
@@ -65,10 +57,6 @@ linux:
       ansible_host: 192.168.86.133
       ceph_ip: 10.0.2.3
       tunnel_ip: 10.0.10.3
-    openstack4:  
-      ansible_host: 192.168.86.134
-      ceph_ip: 10.0.2.4
-      tunnel_ip: 10.0.10.4
   vars:
     ansible_become: true
     ansible_become_pass: Password
