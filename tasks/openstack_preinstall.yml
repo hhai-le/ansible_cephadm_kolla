@@ -21,7 +21,7 @@
 
 - name: edit globals.yml
   template:
-    src: globals.yml.j2
+    src: globals_noceph.yml.j2
     dest: "{{ kolla_config }}/globals.yml"
   
 - name: kolla-genpwd
