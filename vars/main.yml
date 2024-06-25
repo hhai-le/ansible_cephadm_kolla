@@ -2,18 +2,18 @@
 # vars file for ansible_openstack_ceph
 
 #mon_ip: "192.168.86.131"
-mon_ip: "{{ hostvars['openstack1'].ansible_host }}"
+mon_ip: "{{ hostvars['openstack137'].ansible_host }}"
 cluster_network: "10.0.2.0/24"
 ceph_initial_dashboard_user: "admin"
 ceph_initial_dashboard_password: "password"
-virtual_ip: 192.168.86.134
+virtual_ip: 192.168.86.136
 virtual_domain: openstack.j.local
 kolla_directory: "/opt/kolla"
 kolla_config: "/etc/kolla"
 kolla_venv: "kolla-venv"
 #kolla_version: "stable/2023.1"
 kolla_version: "master"
-NIC_mgmt: "ens160"
-NIC_external: "ens192"
-NIC_tunnel: "ens256"
-NIC_storage: "ens224"
+NIC_mgmt: "eno8303"
+NIC_external: "eno8303"
+NIC_tunnel: "eno12399np1"
+NIC_storage: "enp202s0f1np1"

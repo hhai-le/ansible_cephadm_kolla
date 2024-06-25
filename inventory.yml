@@ -1,62 +1,68 @@
 deployer:
   hosts:
-    openstack1:
+    openstack137:
 non_deployer:
   hosts:
-    openstack2:
-    openstack3:
+    openstack138:
+    openstack139:
 ceph_mon:
   hosts:
-    openstack1:
-    openstack2:
-    openstack3:
+    openstack137:
+    openstack138:
+    openstack139:
 ceph_osd:
   hosts:
-    openstack1:
+    openstack137:
       device:
         - /dev/sdb
         - /dev/sdc
-    openstack2:
+        - /dev/sdd
+        - /dev/sde
+    openstack138:
       device:
+        - /dev/sda
         - /dev/sdb
         - /dev/sdc
-    openstack3:
+        - /dev/sdc
+    openstack139:
       device:
+        - /dev/sda
         - /dev/sdb
+        - /dev/sdc
         - /dev/sdc
 openstack_control:
   hosts:
-    openstack1:
+    openstack137:
 openstack_network:
   hosts:
-    openstack1:
+    openstack137:
 openstack_compute:
   hosts:
-    openstack1:
-    openstack2:
-    openstack3:
+    openstack137:
+    openstack138:
+    openstack139:
 openstack_monitoring:
   hosts:
-    openstack1:
+    openstack137:
 openstack_storage:
   hosts:
-    openstack1:
-    openstack2:
-    openstack3:
+    openstack137:
+    openstack138:
+    openstack139:
 linux:
   hosts:
-    openstack1:
-      ansible_host: 192.168.86.131
-      ceph_ip: 10.0.2.1
-      tunnel_ip: 10.0.10.1
-    openstack2:
-      ansible_host: 192.168.86.132
-      ceph_ip: 10.0.2.2
-      tunnel_ip: 10.0.10.2
-    openstack3:  
-      ansible_host: 192.168.86.133
-      ceph_ip: 10.0.2.3
-      tunnel_ip: 10.0.10.3
+    openstack137:
+      ansible_host: 192.168.86.137
+      ceph_ip: 10.0.2.137
+      tunnel_ip: 10.0.10.137
+    openstack138:
+      ansible_host: 192.168.86.138
+      ceph_ip: 10.0.2.138
+      tunnel_ip: 10.0.10.138
+    openstack139:  
+      ansible_host: 192.168.86.139
+      ceph_ip: 10.0.2.139
+      tunnel_ip: 10.0.10.139
   vars:
     ansible_become: true
     ansible_become_pass: Password
