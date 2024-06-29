@@ -1,11 +1,11 @@
 ---
 # tasks file for ansible_openstack_ceph
 - include_tasks: common.yml
-#- include_tasks: docker.yml
-#- name: reset ssh connection
-#  meta: reset_connection
-#- name: copy docker images
-#  include_tasks: docker_image.yml
+- include_tasks: docker.yml
+- name: reset ssh connection
+  meta: reset_connection
+- name: copy docker images
+  include_tasks: docker_image.yml
 - include_tasks: sshd.yml
   when: install_ceph|bool == true
 - include_tasks: netplan.yml
