@@ -11,6 +11,8 @@
 - name: bootstrap_output
   copy:
     content: "{{ bootstrap_output.stdout }}"
+    dest: /tmp/bootstrap_output.txt
+  delegate_to: localhost
 
 - name: kolla prechecks
   shell: "/bin/bash /tmp/kolla-ansible.sh prechecks"
@@ -19,6 +21,8 @@
 - name: prechecks_output
   copy:
     content: "{{ prechecks_output.stdout }}"
+    dest: /tmp/prechecks_output.txt
+  delegate_to: localhost
 
 - name: kolla deploy
   shell: "/bin/bash /tmp/kolla-ansible.sh deploy"
@@ -27,6 +31,8 @@
 - name: deploy_output
   copy:
     content: "{{ deploy_output.stdout }}"
+    dest: /tmp/deploy_output.txt
+  delegate_to: localhost
 
 - name: kolla post-deploy
   shell: "/bin/bash /tmp/kolla-ansible.sh post-deploy"
@@ -35,3 +41,5 @@
 - name: postdeploy_output
   copy:
     content: "{{ postdeploy_output.stdout }}"
+    dest: /tmp/postdeploy_output.txt
+  delegate_to: localhost
