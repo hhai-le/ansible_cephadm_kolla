@@ -11,6 +11,9 @@
     state: present
     create: true
 
+- name: edit sources.list to us repo
+  shell: sed -i 's/sg.archive/us.archive/g' /etc/apt/sources.list
+
 - name: disable unattended-upgrades
   systemd:
     name: unattended-upgrades
