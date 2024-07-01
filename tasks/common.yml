@@ -31,3 +31,18 @@
   apt:
     name: chrony
     state: present
+
+- name: chronyd template
+  template:
+    src: chrony.conf.j2
+    dest: /etc/chrony/chrony.conf
+
+- name: restart chronyd service
+  systemd_service:
+    name: chronyd
+    state: restarted
+
+- name: timedatectl
+  shell: |
+    timedatectl set-ntp true
+    timedatectl set-timezone Asia/Singapore
