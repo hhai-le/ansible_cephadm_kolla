@@ -15,18 +15,18 @@
     - python3-openstackclient
 
 - name: create venv for kolla
-  shell: "mkdir -p {{kolla_directory}}"
+  shell: "mkdir -p {{ kolla_directory }}"
 
 - name: copy kolla-venv
   unarchive:
-    src: kolla-ansible.tar
-    dest: /opt/kolla
+    src: /opt/ansible/kolla-ansible.tar
+    dest: "{{ kolla_directory }}"
     owner: root
     group: root
 
 - name: copy ansible collections for kolla
   unarchive:
-    src: ansible_collections.tar
+    src: /opt/ansible/ansible_collections.tar
     dest: /root/
     owner: root
     group: root
