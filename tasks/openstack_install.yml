@@ -6,12 +6,32 @@
 
 - name: kolla bootstrap-servers  
   shell: "/bin/bash /tmp/kolla-ansible.sh bootstrap-servers"
+  register: bootstrap_output
+
+- name: bootstrap_output
+  copy:
+    content: "{{ bootstrap_output.stdout }}"
 
 - name: kolla prechecks
   shell: "/bin/bash /tmp/kolla-ansible.sh prechecks"
+  register: prechecks_output
+
+- name: prechecks_output
+  copy:
+    content: "{{ prechecks_output.stdout }}"
 
 - name: kolla deploy
   shell: "/bin/bash /tmp/kolla-ansible.sh deploy"
+  register: deploy_output
+
+- name: deploy_output
+  copy:
+    content: "{{ deploy_output.stdout }}"
 
 - name: kolla post-deploy
   shell: "/bin/bash /tmp/kolla-ansible.sh post-deploy"
+  register: postdeploy_output
+
+- name: postdeploy_output
+  copy:
+    content: "{{ postdeploy_output.stdout }}"
