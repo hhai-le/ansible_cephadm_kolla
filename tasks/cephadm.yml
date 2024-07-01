@@ -26,9 +26,14 @@
     filename: /etc/apt/sources.list.d/ceph.list
     state: present
 
+- name: copy cephadm package
+  copy:
+    src: cephadm_18.2.2-1jammy_amd64.deb
+    dest: /opt/cephadm_18.2.2-1jammy_amd64.deb
+
 - name: install cephadm package
   apt:
-    name: cephadm
+    deb: /opt/cephadm_18.2.2-1jammy_amd64.deb
     state: present
     update_cache: true
 
