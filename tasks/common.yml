@@ -29,7 +29,6 @@
     name: unattended-upgrades
     state: absent
 
-
 - name: install chrony
   apt:
     name: chrony
