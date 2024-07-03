@@ -18,11 +18,11 @@
   when: inventory_hostname in groups['deployer']
 - include_tasks: ceph_osd.yml
   when: inventory_hostname in groups['deployer']
-- include_tasks: ceph_pool_keyring.yml
-  when: inventory_hostname in groups['deployer']
-- include_tasks: openstack_requirements.yml
-  when: inventory_hostname in groups['deployer']
-- include_tasks: openstack_preinstall.yml
-  when: inventory_hostname in groups['deployer']
-- include_tasks: openstack_install.yml
-  when: inventory_hostname in groups['deployer']
+#- include_tasks: ceph_pool_keyring.yml
+#  when: inventory_hostname in groups['deployer']
+#- include_tasks: openstack_requirements.yml
+#  when: inventory_hostname in groups['deployer']
+#- include_tasks: openstack_preinstall.yml
+#  when: inventory_hostname in groups['deployer']
+#- include_tasks: openstack_install.yml
+#  when: inventory_hostname in groups['deployer']
