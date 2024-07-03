@@ -23,13 +23,13 @@ ceph_osd:
         - /dev/sda
         - /dev/sdb
         - /dev/sdc
-        - /dev/sdc
+        - /dev/sdd
     openstack139:
       device:
         - /dev/sda
         - /dev/sdb
         - /dev/sdc
-        - /dev/sdc
+        - /dev/sdd
 openstack_control:
   hosts:
     openstack137:
