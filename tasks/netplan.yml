@@ -4,14 +4,14 @@
     src: netplan_update.sh.j2
     dest: /tmp/netplan_update.sh
     mode: '0755'
-  when: NIC_storage is defined and NIC_storage != NIC_mgmt
+  when: NIC_storage is defined and NIC_internal_ceph != NIC_mgmt
 
 - name: copy netplan_update script to server
   template:
     src: netplan_update_nocephnetwork.sh.j2
     dest: /tmp/netplan_update_.sh
     mode: '0755'
-  when: NIC_storage is undefined or NIC_storage == NIC_mgmt
+  when: NIC_storage is undefined or NIC_internal_ceph == NIC_mgmt
 
 - name: update network 
   shell: /bin/bash /tmp/netplan_update.sh
