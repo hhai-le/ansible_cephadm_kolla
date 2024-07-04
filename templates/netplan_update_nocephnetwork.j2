@@ -1,9 +1,0 @@
-#!/bin/bash
-# NIC for ceph cluster network
-
-netplan set ethernets."{{NIC_tunnel}}".dhcp4=false
-#openstack1 => 10.0.10.101
-ip="{{ hostvars[inventory_hostname].tunnel_ip }}"
-netplan set ethernets."{{NIC_tunnel}}".addresses=[$ip/24]
-
-netplan apply

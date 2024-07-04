@@ -47,18 +47,18 @@
      --cluster-network "{{ cluster_network }}" \
      --initial-dashboard-user "{{ ceph_initial_dashboard_user }}" \
      --initial-dashboard-password "{{ ceph_initial_dashboard_password }}" | tee /var/log/cephadm-bootstrap.log
-  when: cluster_network is defined and NIC_internal_ceph is defined
-
-- name: cephadm bootstrap
-  register: cephadm_result
-  failed_when: "cephadm_result.rc != 0 and 'already exists' not in cephadm_result.stderr"
-  changed_when: "cephadm_result.rc == 0 and 'Bootstrap complete' in cephadm_result.stdout"
-  shell: |
-    cephadm bootstrap \
-     --mon-ip "{{ mon_ip }}" \
-     --initial-dashboard-user "{{ ceph_initial_dashboard_user }}" \
-     --initial-dashboard-password "{{ ceph_initial_dashboard_password }}" | tee /var/log/cephadm-bootstrap.log
-  when: cluster_network is undefined or NIC_internal_ceph is undefined
+#  when: cluster_network is defined and NIC_internal_ceph is defined
+#
+#- name: cephadm bootstrap
+#  register: cephadm_result
+#  failed_when: "cephadm_result.rc != 0 and 'already exists' not in cephadm_result.stderr"
+#  changed_when: "cephadm_result.rc == 0 and 'Bootstrap complete' in cephadm_result.stdout"
+#  shell: |
+#    cephadm bootstrap \
+#     --mon-ip "{{ mon_ip }}" \
+#     --initial-dashboard-user "{{ ceph_initial_dashboard_user }}" \
+#     --initial-dashboard-password "{{ ceph_initial_dashboard_password }}" | tee /var/log/cephadm-bootstrap.log
+#  when: cluster_network is undefined or NIC_internal_ceph is undefined
 
 - name: generate ceph.pub scripts
   template:
