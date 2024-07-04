@@ -1,10 +1,16 @@
 #!/bin/bash
 # NIC for ceph cluster network
 
-netplan set ethernets."{{NIC_storage}}".dhcp4=false
+netplan set ethernets."{{NIC_internal_ceph}}".dhcp4=false
 #openstack1 => 10.0.2.101
-ip="{{ hostvars[inventory_hostname].ceph_ip }}"
-netplan set ethernets."{{NIC_storage}}".addresses=[$ip/24]
+ip="{{ hostvars[inventory_hostname].ceph_interal_ip }}"
+netplan set ethernets."{{NIC_internal_ceph}}".addresses=[$ip/24]
+
+netplan set ethernets."{{NIC_external_ceph}}".dhcp4=false
+#openstack1 => 10.0.20.101
+ip="{{ hostvars[inventory_hostname].ceph_exteral_ip }}"
+netplan set ethernets."{{NIC_external_ceph}}".addresses=[$ip/24]
+
 
 netplan set ethernets."{{NIC_tunnel}}".dhcp4=false
 #openstack1 => 10.0.10.101
