@@ -3,7 +3,7 @@ ceph orch host label add {{ hostvars[host].inventory_hostname }} mon
 {% endfor %}
 ceph orch apply mon -unmanaged
 {% for host in groups["ceph_mon"] %}
-ceph orch daemon add mon {{ hostvars[host].inventory_hostname }}:{{ hostvars[host].ansible_host }}
+ceph orch daemon add mon {{ hostvars[host].inventory_hostname }}:{{ hostvars[host].ceph_exteral_ip }}
 {% endfor %}
 ceph orch apply mon --placement="
 {%- for host in groups["ceph_mon"] %}
