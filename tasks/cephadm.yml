@@ -47,7 +47,7 @@
      --cluster-network "{{ cluster_network }}" \
      --initial-dashboard-user "{{ ceph_initial_dashboard_user }}" \
      --initial-dashboard-password "{{ ceph_initial_dashboard_password }}" | tee /var/log/cephadm-bootstrap.log
-  when: cluster_network is defined
+  when: cluster_network is defined and NIC_storage is defined
 
 - name: cephadm bootstrap
   register: cephadm_result
@@ -58,7 +58,7 @@
      --mon-ip "{{ mon_ip }}" \
      --initial-dashboard-user "{{ ceph_initial_dashboard_user }}" \
      --initial-dashboard-password "{{ ceph_initial_dashboard_password }}" | tee /var/log/cephadm-bootstrap.log
-  when: cluster_network is undefined
+  when: cluster_network is undefined or NIC_storage is undefined
 
 - name: generate ceph.pub scripts
   template:

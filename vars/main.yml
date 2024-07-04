@@ -2,8 +2,7 @@
 # vars file for ansible_openstack_ceph
 
 #mon_ip: "192.168.86.131"
-#mon_ip: "{{ hostvars['openstack137'].ansible_host }}"
-mon_ip: "{{ hostvars['openstack137'].ceph_ip }}"
+mon_ip: "{{ hostvars['openstack137'].ansible_host }}"
 #cluster_network: "10.0.2.0/24"
 ceph_initial_dashboard_user: "admin"
 ceph_initial_dashboard_password: "password"
