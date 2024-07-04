@@ -17,6 +17,7 @@
     recurse: yes 
     patterns: "*tar"
     excludes: "kolla"
+    use_regex: True
 
   register: files_to_copy
 - name: copy docker images to servers  
