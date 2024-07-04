@@ -18,6 +18,7 @@
     patterns: "*tar"
     excludes: "kolla"
     use_regex: True
+  delegate_to:  localhost
 
   register: files_to_copy
 - name: copy docker images to servers  
