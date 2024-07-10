@@ -53,16 +53,19 @@ linux:
   hosts:
     openstack137:
       ansible_host: 192.168.86.137
-      ceph_ip: 10.0.2.137
-      tunnel_ip: 10.0.10.137
+      ceph_interal_ip: 10.0.2.137
+      ceph_exteral_ip: 10.0.10.137
+      tunnel_ip: 10.0.20.137
     openstack138:
       ansible_host: 192.168.86.138
-      ceph_ip: 10.0.2.138
-      tunnel_ip: 10.0.10.138
+      ceph_interal_ip: 10.0.2.138
+      ceph_exteral_ip: 10.0.10.138
+      tunnel_ip: 10.0.20.138
     openstack139:  
       ansible_host: 192.168.86.139
-      ceph_ip: 10.0.2.139
-      tunnel_ip: 10.0.10.139
+      ceph_interal_ip: 10.0.2.139
+      ceph_exteral_ip: 10.0.10.139
+      tunnel_ip: 10.0.20.139
   vars:
     ansible_become: true
     ansible_become_pass: Password
