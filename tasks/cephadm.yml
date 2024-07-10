@@ -28,7 +28,7 @@
 
 - name: copy cephadm package
   copy:
-    src: cephadm_18.2.2-1jammy_amd64.deb
+    src: /opt/ansible/cephadm_18.2.2-1jammy_amd64.deb
     dest: /opt/cephadm_18.2.2-1jammy_amd64.deb
 
 - name: install cephadm package
