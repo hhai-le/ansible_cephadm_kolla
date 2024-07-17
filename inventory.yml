@@ -45,17 +45,17 @@ openstack_storage:
     openstack3:
 linux:
   hosts:
-    openstack1:
+    openstack131:
       ansible_host: 192.168.86.131
       ceph_interal_ip: 10.0.2.131
       ceph_exteral_ip: 10.0.10.131
       tunnel_ip: 10.0.10.131
-    openstack2:
+    openstack132:
       ansible_host: 192.168.86.132
       ceph_interal_ip: 10.0.2.132
       ceph_exteral_ip: 10.0.10.132
       tunnel_ip: 10.0.10.132
-    openstack3:  
+    openstack133:  
       ansible_host: 192.168.86.133
       ceph_interal_ip: 10.0.2.133
       ceph_exteral_ip: 10.0.10.133
