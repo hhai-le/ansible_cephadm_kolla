@@ -7,9 +7,7 @@
 - name: copy docker images
   include_tasks: docker_image.yml
 - include_tasks: sshd.yml
-  when: install_ceph|bool == true
 - include_tasks: netplan.yml
-  when: install_ceph|bool == true
 - include_tasks: cephadm.yml
   when: inventory_hostname in groups['deployer']
 - include_tasks: ceph.yml
