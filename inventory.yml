@@ -1,48 +1,48 @@
 deployer:
   hosts:
-    openstack1:
+    openstack131:
 non_deployer:
   hosts:
-    openstack2:
-    openstack3:
+    openstack132:
+    openstack133:
 ceph_mon:
   hosts:
-    openstack1:
-    openstack2:
-    openstack3:
+    openstack131:
+    openstack132:
+    openstack133:
 ceph_osd:
   hosts:
-    openstack1:
+    openstack131:
       device:
         - /dev/sdb
         - /dev/sdc
-    openstack2:
+    openstack132:
       device:
         - /dev/sdb
         - /dev/sdc
-    openstack3:
+    openstack133:
       device:
         - /dev/sdb
         - /dev/sdc
 openstack_control:
   hosts:
-    openstack1:
+    openstack131:
 openstack_network:
   hosts:
-    openstack1:
+    openstack131:
 openstack_compute:
   hosts:
-    openstack1:
-    openstack2:
-    openstack3:
+    openstack131:
+    openstack132:
+    openstack133:
 openstack_monitoring:
   hosts:
-    openstack1:
+    openstack131:
 openstack_storage:
   hosts:
-    openstack1:
-    openstack2:
-    openstack3:
+    openstack131:
+    openstack132:
+    openstack133:
 linux:
   hosts:
     openstack131:
