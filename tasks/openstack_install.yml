@@ -24,22 +24,22 @@
     dest: /tmp/prechecks_output.txt
   delegate_to: localhost
 
-- name: kolla deploy
-  shell: "/bin/bash /tmp/kolla-ansible.sh deploy"
-  register: deploy_output
-
-- name: deploy_output
-  copy:
-    content: "{{ deploy_output.stdout }}"
-    dest: /tmp/deploy_output.txt
-  delegate_to: localhost
-
-- name: kolla post-deploy
-  shell: "/bin/bash /tmp/kolla-ansible.sh post-deploy"
-  register: postdeploy_output
-
-- name: postdeploy_output
-  copy:
-    content: "{{ postdeploy_output.stdout }}"
-    dest: /tmp/postdeploy_output.txt
-  delegate_to: localhost
+#- name: kolla deploy
+#  shell: "/bin/bash /tmp/kolla-ansible.sh deploy"
+#  register: deploy_output
+#
+#- name: deploy_output
+#  copy:
+#    content: "{{ deploy_output.stdout }}"
+#    dest: /tmp/deploy_output.txt
+#  delegate_to: localhost
+#
+#- name: kolla post-deploy
+#  shell: "/bin/bash /tmp/kolla-ansible.sh post-deploy"
+#  register: postdeploy_output
+#
+#- name: postdeploy_output
+#  copy:
+#    content: "{{ postdeploy_output.stdout }}"
+#    dest: /tmp/postdeploy_output.txt
+#  delegate_to: localhost
