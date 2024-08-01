@@ -18,6 +18,7 @@
     - lsb-release
     - wget
     - lvm2
+    - python3-docker
 
 - name: remove old docker gpg 
   file:

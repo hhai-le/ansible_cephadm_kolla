@@ -13,7 +13,6 @@
     - python3-venv
     - crudini
     - python3-openstackclient
-    - python3-docker
 
 - name: create venv for kolla
   shell: "mkdir -p {{ kolla_directory }}"
