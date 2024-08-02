@@ -37,6 +37,12 @@
 #    state: present
 #    update_cache: true
 
+- name: install cephadm package
+  apt:
+    name: cephadm
+    state: present
+    update_cache: true
+
 - name: cephadm bootstrap
   register: cephadm_result
   failed_when: "cephadm_result.rc != 0 and 'already exists' not in cephadm_result.stderr"
