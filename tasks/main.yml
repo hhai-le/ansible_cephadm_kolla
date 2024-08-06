@@ -1,11 +1,11 @@
 ---
 # tasks file for ansible_openstack_ceph
 - include_tasks: common.yml
-- include_tasks: docker.yml
-- name: reset ssh connection (newgrp docker equivalent)
+- include_tasks: podman.yml
+- name: reset ssh connection (newgrp podman equivalent)
   meta: reset_connection
-- name: copy docker images
-  include_tasks: docker_image.yml
+- name: copy podman images
+  include_tasks: podman_image.yml
 - include_tasks: sshd.yml
 - include_tasks: netplan.yml
 - include_tasks: cephadm.yml
