@@ -17,25 +17,31 @@
     path: /etc/apt/trusted.gpg.d/ceph.gpg
     state: absent
 
-- name: cephadm apt key
-  shell: wget -q -O- 'https://download.ceph.com/keys/release.asc' | sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/ceph.gpg
-
-- name: cephadm repo
-  apt_repository:
-    repo: "deb https://download.ceph.com/debian-reef/ {{ ansible_distribution_release }} main" 
-    filename: /etc/apt/sources.list.d/ceph.list
-    state: present
-
-#- name: copy cephadm package
+#- name: cephadm apt key
+#  shell: wget -q -O- 'https://download.ceph.com/keys/release.asc' | sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/ceph.gpg
 #  copy:
-#    src: /opt/ansible/cephadm_18.2.2-1jammy_amd64.deb
-#    dest: /opt/cephadm_18.2.2-1jammy_amd64.deb
-#
-#- name: install cephadm package
-#  apt:
-#    deb: /opt/cephadm_18.2.2-1jammy_amd64.deb
+#    src: files/ceph.gpg
+#    dest: /etc/apt/trusted.gpg.d/ceph.gpg
+#    mode: '0644'
+#    owner: root
+#    group: root
+
+#- name: cephadm repo
+#  apt_repository:
+#    repo: "deb https://download.ceph.com/debian-reef/ {{ ansible_distribution_release }} main" 
+#    filename: /etc/apt/sources.list.d/ceph.list
 #    state: present
-#    update_cache: true
+
+- name: copy cephadm package
+  copy:
+    src: /opt/ansible/cephadm_18.2.4-1jammy_amd64.deb
+    dest: /opt/cephadm_18.2.4-1jammy_amd64.deb
+
+- name: install cephadm package
+  apt:
+    deb: /opt/cephadm_18.2.4-1jammy_amd64.deb
+    state: present
+    update_cache: true
 
 - name: install cephadm package
   apt:
@@ -43,22 +49,22 @@
     state: present
     update_cache: true
 
-- name: cephadm bootstrap
-  register: cephadm_result
-  failed_when: "cephadm_result.rc != 0 and 'already exists' not in cephadm_result.stderr"
-  changed_when: "cephadm_result.rc == 0 and 'Bootstrap complete' in cephadm_result.stdout"
-  shell: |
-    cephadm bootstrap \
-      --mon-ip "{{ mon_ip }}" \
-      --cluster-network "{{ cluster_network }}" \
-      --initial-dashboard-user "{{ ceph_initial_dashboard_user }}" \
-      --initial-dashboard-password "{{ ceph_initial_dashboard_password }}" | tee /var/log/cephadm.log
-
-- name: generate ceph.pub scripts
-  template:
-    src: ceph_pub.sh.j2
-    dest: /tmp/ceph_pub.sh
-    mode: '0755'
-
-- name: run update ceph.pub scripts
-  shell: /bin/bash /tmp/ceph_pub.sh
+#- name: cephadm bootstrap
+#  register: cephadm_result
+#  failed_when: "cephadm_result.rc != 0 and 'already exists' not in cephadm_result.stderr"
+#  changed_when: "cephadm_result.rc == 0 and 'Bootstrap complete' in cephadm_result.stdout"
+#  shell: |
+#    cephadm bootstrap \
+#      --mon-ip "{{ mon_ip }}" \
+#      --cluster-network "{{ cluster_network }}" \
+#      --initial-dashboard-user "{{ ceph_initial_dashboard_user }}" \
+#      --initial-dashboard-password "{{ ceph_initial_dashboard_password }}" | tee /var/log/cephadm.log
+#
+#- name: generate ceph.pub scripts
+#  template:
+#    src: ceph_pub.sh.j2
+#    dest: /tmp/ceph_pub.sh
+#    mode: '0755'
+#
+#- name: run update ceph.pub scripts
+#  shell: /bin/bash /tmp/ceph_pub.sh
