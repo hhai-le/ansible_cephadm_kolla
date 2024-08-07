@@ -2,25 +2,25 @@
 # tasks file for ansible_openstack_ceph
 - include_tasks: common.yml
 - include_tasks: podman.yml
-- name: reset ssh connection (newgrp podman equivalent)
+- name: reset ssh connection
   meta: reset_connection
-- name: copy podman images
-  include_tasks: podman_image.yml
+#- name: copy podman images
+#  include_tasks: podman_image.yml
 - include_tasks: sshd.yml
 - include_tasks: netplan.yml
 - include_tasks: cephadm.yml
   when: inventory_hostname in groups['deployer']
-#- include_tasks: ceph.yml
-#  when: inventory_hostname in groups['deployer']
-#- include_tasks: ceph_mon.yml
-#  when: inventory_hostname in groups['deployer']
-#- include_tasks: ceph_osd.yml
-#  when: inventory_hostname in groups['deployer']
-#- include_tasks: ceph_pool_keyring.yml
-#  when: inventory_hostname in groups['deployer']
-#- include_tasks: openstack_requirements.yml
-#  when: inventory_hostname in groups['deployer']
-#- include_tasks: openstack_preinstall.yml
-#  when: inventory_hostname in groups['deployer']
-#- include_tasks: openstack_install.yml
-#  when: inventory_hostname in groups['deployer']
+- include_tasks: ceph.yml
+  when: inventory_hostname in groups['deployer']
+- include_tasks: ceph_mon.yml
+  when: inventory_hostname in groups['deployer']
+- include_tasks: ceph_osd.yml
+  when: inventory_hostname in groups['deployer']
+- include_tasks: ceph_pool_keyring.yml
+  when: inventory_hostname in groups['deployer']
+- include_tasks: openstack_requirements.yml
+  when: inventory_hostname in groups['deployer']
+- include_tasks: openstack_preinstall.yml
+  when: inventory_hostname in groups['deployer']
+- include_tasks: openstack_install.yml
+  when: inventory_hostname in groups['deployer']
