@@ -49,22 +49,22 @@
     state: present
     update_cache: true
 
-#- name: cephadm bootstrap
-#  register: cephadm_result
-#  failed_when: "cephadm_result.rc != 0 and 'already exists' not in cephadm_result.stderr"
-#  changed_when: "cephadm_result.rc == 0 and 'Bootstrap complete' in cephadm_result.stdout"
-#  shell: |
-#    cephadm bootstrap \
-#      --mon-ip "{{ mon_ip }}" \
-#      --cluster-network "{{ cluster_network }}" \
-#      --initial-dashboard-user "{{ ceph_initial_dashboard_user }}" \
-#      --initial-dashboard-password "{{ ceph_initial_dashboard_password }}" | tee /var/log/cephadm.log
-#
-#- name: generate ceph.pub scripts
-#  template:
-#    src: ceph_pub.sh.j2
-#    dest: /tmp/ceph_pub.sh
-#    mode: '0755'
-#
-#- name: run update ceph.pub scripts
-#  shell: /bin/bash /tmp/ceph_pub.sh
+- name: cephadm bootstrap
+  register: cephadm_result
+  failed_when: "cephadm_result.rc != 0 and 'already exists' not in cephadm_result.stderr"
+  changed_when: "cephadm_result.rc == 0 and 'Bootstrap complete' in cephadm_result.stdout"
+  shell: |
+    cephadm bootstrap \
+      --mon-ip "{{ mon_ip }}" \
+      --cluster-network "{{ cluster_network }}" \
+      --initial-dashboard-user "{{ ceph_initial_dashboard_user }}" \
+      --initial-dashboard-password "{{ ceph_initial_dashboard_password }}" | tee /var/log/cephadm.log
+
+- name: generate ceph.pub scripts
+  template:
+    src: ceph_pub.sh.j2
+    dest: /tmp/ceph_pub.sh
+    mode: '0755'
+
+- name: run update ceph.pub scripts
+  shell: /bin/bash /tmp/ceph_pub.sh
