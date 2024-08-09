@@ -9,7 +9,7 @@
     src: "{{ item }}"
     dest: /opt/images
   with_fileglob:
-    - "/opt/images/*tar"
+    - "/opt/docker-images/*tar"
 
 #- name: list all images to copy
 #  find: paths="files/*tar" recurse=yes patterns="*tar"
