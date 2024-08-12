@@ -1,6 +1,6 @@
 ---
 kolla_base_distro: "ubuntu"
-kolla_container_engine: podman
+kolla_container_engine: docker
 kolla_internal_vip_address: "{{ virtual_ip }}"
 network_interface: "{{ NIC_mgmt }}"
 neutron_external_interface: "{{ NIC_external }}"
@@ -44,5 +44,5 @@ enable_cloudkitty: "yes"
 #octavia_certs_state: SG
 #octavia_certs_organization: Alpha
 #octavia_certs_organizational_unit: IT
-#cloudkitty_storage_backend: elasticsearch
-#cloudkitty_collector_backend: prometheus
+cloudkitty_storage_backend: elasticsearch
+cloudkitty_collector_backend: prometheus
