@@ -7,7 +7,7 @@ neutron_external_interface: "{{ NIC_external }}"
 storage_interface: "{{ NIC_external_ceph }}"
 swift_storage_interface: "{{ '{{' }} storage_interface {{ '}}' }}"
 tunnel_interface: "{{ NIC_tunnel }}"
-kolla_internal_fqdn: opmgmt.as132337.net
+#kolla_internal_fqdn: opmgmt.as132337.net
 kolla_external_fqdn: opmgmt.as132337.net
 neutron_plugin_agent: "openvswitch"
 enable_cinder: "yes"
