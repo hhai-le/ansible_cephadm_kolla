@@ -13,9 +13,6 @@ ceph_mon:
     openstack137:
     openstack138:
     openstack139:
-    openstack135:
-    openstack134:
-    openstack133:
 ceph_osd:
   hosts:
     openstack137:
@@ -57,9 +54,13 @@ ceph_osd:
 openstack_control:
   hosts:
     openstack137:
+    openstack138:
+    openstack139:
 openstack_network:
   hosts:
     openstack137:
+    openstack138:
+    openstack139:
 openstack_compute:
   hosts:
     openstack137:
@@ -71,6 +72,8 @@ openstack_compute:
 openstack_monitoring:
   hosts:
     openstack137:
+    openstack138:
+    openstack139:
 openstack_storage:
   hosts:
     openstack137:
