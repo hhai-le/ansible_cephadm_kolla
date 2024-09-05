@@ -6,12 +6,16 @@ non_deployer:
     openstack138:
     openstack139:
     openstack135:
+    openstack134:
+    openstack133:
 ceph_mon:
   hosts:
     openstack137:
     openstack138:
     openstack139:
     openstack135:
+    openstack134:
+    openstack133:
 ceph_osd:
   hosts:
     openstack137:
@@ -38,6 +42,18 @@ ceph_osd:
         - /dev/sdb
         - /dev/sdc
         - /dev/sdd
+    openstack134:
+      device:
+        - /dev/sda
+        - /dev/sdb
+        - /dev/sdc
+        - /dev/sdd
+    openstack133:
+      device:
+        - /dev/sda
+        - /dev/sdb
+        - /dev/sdc
+        - /dev/sdd
 openstack_control:
   hosts:
     openstack137:
@@ -50,6 +66,8 @@ openstack_compute:
     openstack138:
     openstack139:
     openstack135:
+    openstack134:
+    openstack133:
 openstack_monitoring:
   hosts:
     openstack137:
@@ -59,6 +77,8 @@ openstack_storage:
     openstack138:
     openstack139:
     openstack135:
+    openstack134:
+    openstack133:
 linux:
   hosts:
     openstack137:
@@ -81,6 +101,16 @@ linux:
       ceph_interal_ip: 10.0.2.135
       ceph_exteral_ip: 10.0.10.135
       tunnel_ip: 10.0.20.135
+    openstack134:
+      ansible_host: 192.168.86.134
+      ceph_interal_ip: 10.0.2.134
+      ceph_exteral_ip: 10.0.10.134
+      tunnel_ip: 10.0.20.134
+    openstack133:
+      ansible_host: 192.168.86.133
+      ceph_interal_ip: 10.0.2.133
+      ceph_exteral_ip: 10.0.10.133
+      tunnel_ip: 10.0.20.133
   vars:
     ansible_become: true
     ansible_become_pass: Password
