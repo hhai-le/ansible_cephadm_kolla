@@ -1,2 +1,7 @@
-- name: deploy cinder lvm
-  shell: "{{ lookup('template', 'cinder_lvm_create.sh.j2') }}"
+- name: template deploy mon
+  template:
+    src: cinder_lvm_create.sh.j2
+    dest: /tmp/cinder_lvm_create.sh
+
+#- name: deploy cinder lvm
+#  shell: "{{ lookup('template', 'cinder_lvm_create.sh.j2') }}"
