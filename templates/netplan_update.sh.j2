@@ -3,12 +3,12 @@
 
 netplan set ethernets."{{NIC_internal_ceph}}".dhcp4=false
 #openstack1 => 10.0.2.101
-ip="{{ hostvars[inventory_hostname].ceph_interal_ip }}"
+ip="{{ hostvars[inventory_hostname].ceph_internal_ip }}"
 netplan set ethernets."{{NIC_internal_ceph}}".addresses=[$ip/24]
 
 netplan set ethernets."{{NIC_external_ceph}}".dhcp4=false
 #openstack1 => 10.0.20.101
-ip="{{ hostvars[inventory_hostname].ceph_exteral_ip }}"
+ip="{{ hostvars[inventory_hostname].ceph_external_ip }}"
 netplan set ethernets."{{NIC_external_ceph}}".addresses=[$ip/24]
 
 
