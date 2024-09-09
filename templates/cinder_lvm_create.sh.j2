@@ -6,5 +6,5 @@ pvcreate {{ dev }}
 
 vgcreate cinder-volumes 
 {%- for dev in hostvars[inventory_hostname].device %}
-{{ dev }}
+ {{ dev }}
 {%- endfor -%}
