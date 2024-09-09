@@ -2,5 +2,9 @@
 
 {% for dev in hostvars[inventory_hostname].device %}
 pvcreate {{ dev }}
-vgcreate cinder-volumes {{ dev }}
 {% endfor %}
+
+vgcreate cinder-volumes 
+{% for dev in hostvars[inventory_hostname].device %}
+{{- dev -}}
+{%- endfor -%}
