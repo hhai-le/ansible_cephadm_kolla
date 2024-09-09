@@ -1,0 +1,6 @@
+#!/bin/bash
+
+{% for dev in hostvars[inventory_hostname].device %}
+pvcreate {{ dev }}
+vgcreate cinder-volumes {{ dev }}
+{% endfor %}

@@ -1,0 +1,2 @@
+- name: deploy cinder lvm
+  shell: "{{ lookup('template', 'cinder_lvm_create.sh.j2') }}"
