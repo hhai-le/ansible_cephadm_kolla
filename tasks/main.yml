@@ -5,8 +5,8 @@
 #- include_tasks: podman.yml
 - name: reset ssh connection
   meta: reset_connection
-#- name: copy docker images
-#  include_tasks: docker_image.yml
+- name: copy docker images
+  include_tasks: docker_image.yml
 #- name: copy podman images
 #  include_tasks: podman_image.yml
 - include_tasks: sshd.yml
