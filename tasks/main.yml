@@ -12,15 +12,20 @@
 - include_tasks: sshd.yml
 - include_tasks: netplan.yml
 - include_tasks: cephadm.yml
-  when: inventory_hostname in groups['deployer']
+  when: (inventory_hostname in groups['deployer']) and
+        (install_ceph | bool)
 - include_tasks: ceph.yml
-  when: inventory_hostname in groups['deployer']
+  when: (inventory_hostname in groups['deployer']) and
+        (install_ceph | bool)
 - include_tasks: ceph_mon.yml
-  when: inventory_hostname in groups['deployer']
+  when: (inventory_hostname in groups['deployer']) and
+        (install_ceph | bool)
 - include_tasks: ceph_osd.yml
-  when: inventory_hostname in groups['deployer']
+  when: (inventory_hostname in groups['deployer']) and
+        (install_ceph | bool)
 - include_tasks: ceph_pool_keyring.yml
-  when: inventory_hostname in groups['deployer']
+  when: (inventory_hostname in groups['deployer']) and
+        (install_ceph | bool)
 - include_tasks: openstack_requirements.yml
   when: inventory_hostname in groups['deployer']
 - include_tasks: openstack_preinstall.yml

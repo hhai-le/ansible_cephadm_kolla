@@ -1,5 +1,4 @@
 ---
 # defaults file for ansible_openstack_ceph
 
-install_all: true
-install_ceph: "{{ install_all }}"
+install_ceph: true
