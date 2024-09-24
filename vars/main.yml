@@ -6,7 +6,7 @@ mon_ip: "{{ hostvars['openstack135'].ceph_external_ip }}"
 cluster_network: "10.0.2.0/24"
 ceph_initial_dashboard_user: "admin"
 ceph_initial_dashboard_password: "password"
-virtual_ip: 192.168.86.136
+virtual_ip: 192.168.86.132
 virtual_domain: opmgmt2.as132337.net
 kolla_directory: "/opt/kolla"
 kolla_config: "/etc/kolla"
