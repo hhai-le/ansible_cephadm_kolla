@@ -2,3 +2,4 @@ files/id_rsa*
 files/*tar
 tests/*yml
 /*.orig
+.vscode
