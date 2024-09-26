@@ -8,6 +8,9 @@
 #- name: update network 
 #  shell: /bin/bash /tmp/netplan_update.sh
 
+- name: backup old netplan config
+  shell: mv /etc/netplan/00-installer-config.yaml /etc/netplan/00-installer-config.yaml.orig
+
 - name: copy netplan_update script to server
   template:
     src: 00-installer-config.yaml.j2
