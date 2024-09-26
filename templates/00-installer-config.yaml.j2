@@ -24,6 +24,6 @@ network:
       dhcp4: true
     "{{ NIC_ceph }}":
       addresses:
-      - "10.0.20.137/24"
-      - "10.0.30.137/24"
+      - "{{ ceph_internal_ip }}"
+      - "{{ ceph_external_ip }}"
       dhcp4: false
