@@ -22,8 +22,12 @@ network:
       dhcp4: true
     "{{ NIC_external }}":
       dhcp4: true
-    "{{ NIC_ceph }}":
+    enp202s0f1np1:
+      dhcp4: false
+  bridges:
+    br-int-ceph:
+      dhcp4: false
       addresses:
       - "{{ ceph_internal_ip }}"
       - "{{ ceph_external_ip }}"
-      dhcp4: false
+      interfaces: "{{ NIC_ceph }}"
