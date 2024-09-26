@@ -49,11 +49,6 @@
     state: present
     update_cache: true
 
-- name: cephadm bootstrap template
-  template: 
-    src: cephadm_bootstrap.sh.j2
-    dest: /tmp/cephadm_bootstrap.sh
-
 #- name: cephadm bootstrap
 #  register: cephadm_result
 #  failed_when: "cephadm_result.rc != 0 and 'already exists' not in cephadm_result.stderr"
@@ -64,6 +59,14 @@
 #      --cluster-network "{{ cluster_network }}" \
 #      --initial-dashboard-user "{{ ceph_initial_dashboard_user }}" \
 #      --initial-dashboard-password "{{ ceph_initial_dashboard_password }}" | tee /var/log/cephadm_bootstrap.log
+
+- name: cephadm bootstrap template
+  template: 
+    src: cephadm_bootstrap.sh.j2
+    dest: /tmp/cephadm_bootstrap.sh
+
+- name: run cephadm bootstrap
+  shell: /bin/bash /tmp/cephadm_bootstrap.sh
 
 - name: generate ceph.pub scripts
   template:
