@@ -1,2 +1,10 @@
-- name: deploy osd
-  shell: "{{ lookup('template', 'ceph_orch_apply_osd.sh.j2') }}"
+#- name: deploy osd
+#  shell: "{{ lookup('template', 'ceph_orch_apply_osd.sh.j2') }}"
+
+- name: template deploy osd
+  template:
+    src: ceph_orch_apply_osd.sh.j2
+    dest: /tmp/ceph_orch_apply_osd.sh
+
+- name: deploy mon
+  shell: /bin/bash /tmp/ceph_orch_apply_osd.sh

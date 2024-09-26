@@ -16,8 +16,16 @@
 - name: clear multinode 
   shell: /bin/bash /tmp/clear_multinode.sh
 
+#- name: template update multinode 
+#  shell: "{{ lookup('template', 'openstack_multinode.sh.j2') }}"
+
+- name: template update multinode
+  template:
+    src: openstack_multinode.sh.j2
+    dest: /tmp/openstack_multinode.sh
+
 - name: update multinode 
-  shell: "{{ lookup('template', 'openstack_multinode.sh.j2') }}"
+  shell: /bin/bash /tmp/openstack_multinode.sh
 
 - name: edit globals.yml
   template:
