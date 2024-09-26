@@ -1,12 +1,11 @@
 ---
 - name: PermitRootLogin from first host
-  when: inventory_hostname in groups['non_deployer']
   blockinfile:
     path: /etc/ssh/sshd_config
     state: present
     block: |
       {% for node in groups['deployer'] %}
-      Match Address {{ hostvars[node].ansible_host }}
+      Match Address {{ hostvars[node].mgmt_ip | ansible.utils.ipaddr('address')  }}
               PermitRootLogin yes
 
       {% endfor %}
