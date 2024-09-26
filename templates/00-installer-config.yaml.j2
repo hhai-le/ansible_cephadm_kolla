@@ -25,7 +25,7 @@ network:
     enp202s0f1np1:
       dhcp4: false
   bridges:
-    br-int-ceph:
+    {{ NIC_ceph_br }}:
       dhcp4: false
       addresses:
       - {{ ceph_internal_ip }}
