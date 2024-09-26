@@ -1,10 +1,20 @@
 ---
+#- name: copy netplan_update script to server
+#  template:
+#    src: netplan_update.sh.j2
+#    dest: /tmp/netplan_update.sh
+#    mode: '0755'
+#
+#- name: update network 
+#  shell: /bin/bash /tmp/netplan_update.sh
+
 - name: copy netplan_update script to server
   template:
-    src: netplan_update.sh.j2
-    dest: /tmp/netplan_update.sh
-    mode: '0755'
+    src: 00-installer-config.yaml.j2
+    dest: /etc/netplan/00-installer-config.yaml
+    mode: '0600'
 
 - name: update network 
-  shell: /bin/bash /tmp/netplan_update.sh
-
+  shell: |
+    netplan generate
+    netplan apply
