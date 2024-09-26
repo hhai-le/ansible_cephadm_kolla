@@ -4,13 +4,13 @@
 #mon_ip: "192.168.86.131"
 mon_ip: "{{ hostvars[groups['deployer'][0]].ceph_external_ip | ansible.utils.ipaddr('address') }}"
 cluster_network: "{{ hostvars[groups['deployer'][0]].ceph_internal_ip | ansible.utils.ipaddr('network/prefix') }}"
-ceph_initial_dashboard_user: "admin"
-ceph_initial_dashboard_password: "password"
+ceph_initial_dashboard_user: admin
+ceph_initial_dashboard_password: password
 virtual_ip: 192.168.86.132
 virtual_domain: opmgmt2.as132337.net
-kolla_directory: "/opt/kolla"
-kolla_config: "/etc/kolla"
-kolla_venv: "kolla-venv"
+kolla_directory: /opt/kolla
+kolla_config: /etc/kolla
+kolla_venv: kolla-venv
 #kolla_version: "stable/2023.1"
 kolla_version: "master"
 
