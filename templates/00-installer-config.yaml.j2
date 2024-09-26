@@ -1,0 +1,30 @@
+network:
+  version: 2
+  ethernets:
+    eno12399np0:
+      addresses:
+      - "10.0.10.137/24"
+      dhcp4: false
+    eno12409np1:
+      addresses:
+      - "10.0.2.137/24"
+      dhcp4: false
+    eno8303:
+      addresses:
+      - "192.168.86.137/24"
+      nameservers:
+        addresses:
+        - 172.16.11.5
+        - 172.16.11.6
+        search: []
+      routes:
+      - to: "default"
+        via: "192.168.86.1"
+    eno8403:
+      dhcp4: true
+    enp202s0f0np0:
+      dhcp4: true
+    enp202s0f1np1:
+      addresses:
+      - "10.0.20.137/24"
+      dhcp4: false
