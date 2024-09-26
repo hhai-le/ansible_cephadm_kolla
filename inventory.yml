@@ -45,6 +45,7 @@ openstack_storage:
 linux:
   hosts:
     openstack135:
+      ansible_host: 192.168.86.135
       mgmt_ip: "192.168.86.135/24"
       ceph_internal_ip: "10.0.10.135/24"
       ceph_external_ip: "10.0.20.135/24"
@@ -53,6 +54,7 @@ linux:
       dns1: "172.16.11.5"
       dns2: "172.16.11.6"
     openstack139:
+      ansible_host: 192.168.86.139
       mgmt_ip: "192.168.86.139/24"
       ceph_internal_ip: "10.0.10.139/24"
       ceph_external_ip: "10.0.20.139/24"
