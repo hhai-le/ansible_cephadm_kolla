@@ -18,6 +18,7 @@ NIC_mgmt: "eno8303"
 NIC_tunnel: "eno12409np1"
 NIC_external: "enp202s0f0np0"
 NIC_ceph: "enp202s0f1np1"
+
 #NIC_internal_ceph: "enp202s0f1np1"
 #NIC_external_ceph: "enp202s0f1np1"
 #enp202s0f0np0
