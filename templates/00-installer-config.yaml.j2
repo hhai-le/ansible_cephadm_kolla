@@ -1,0 +1,29 @@
+network:
+  version: 2
+  ethernets:
+    eno12399np0:
+      dhcp4: true
+    "{{ NIC_tunnel }}":
+      addresses:
+      - "{{ tunnel_ip }}"
+      dhcp4: false
+    "{{ NIC_mgmt }}":
+      addresses:
+      - "{{ mgmt_ip }}"
+      nameservers:
+        addresses:
+        - "{{ dns1 }}"
+        - "{{ dns2 }}"
+        search: []
+      routes:
+      - to: "default"
+        via: "{{ mgmt_default_gw }}"
+    eno8403:
+      dhcp4: true
+    "{{ NIC_external }}":
+      dhcp4: true
+    "{{ NIC_ceph }}":
+      addresses:
+      - "{{ ceph_internal_ip }}"
+      - "{{ ceph_external_ip }}"
+      dhcp4: false
