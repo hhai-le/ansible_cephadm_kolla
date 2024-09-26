@@ -44,16 +44,22 @@ openstack_storage:
     openstack139:
 linux:
   hosts:
-    openstack139:
-      ansible_host: 192.168.86.139
-      ceph_internal_ip: 10.0.2.139
-      ceph_external_ip: 10.0.10.139
-      tunnel_ip: 10.0.20.139
     openstack135:
-      ansible_host: 192.168.86.135
-      ceph_internal_ip: 10.0.2.135
-      ceph_external_ip: 10.0.10.135
-      tunnel_ip: 10.0.20.135
+      mgmt_ip: "192.168.86.135/24"
+      ceph_internal_ip: "10.0.10.135/24"
+      ceph_external_ip: "10.0.20.135/24"
+      tunnel_ip: "10.0.30.135/24"
+      mgmt_default_gw: "192.168.86.1"
+      dns1: "172.16.11.5"
+      dns2: "172.16.11.6"
+    openstack139:
+      mgmt_ip: "192.168.86.139/24"
+      ceph_internal_ip: "10.0.10.139/24"
+      ceph_external_ip: "10.0.20.139/24"
+      tunnel_ip: "10.0.30.139/24"
+      mgmt_default_gw: "192.168.86.1"
+      dns1: "172.16.11.5"
+      dns2: "172.16.11.6"
   vars:
     ansible_become: true
     ansible_become_pass: Password

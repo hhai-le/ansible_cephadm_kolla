@@ -6,7 +6,7 @@
     state: present
     block: |
       {% for node in groups['deployer'] %}
-      Match Address {{ hostvars[node].ansible_host }}
+      Match Address {{ hostvars[node].mgmt_ip | ipaddr('address') }}
               PermitRootLogin yes
 
       {% endfor %}
