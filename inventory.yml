@@ -46,22 +46,22 @@ linux:
   hosts:
     openstack137:
       ansible_host: 192.168.86.137
-      mgmt_ip: "192.168.86.137/24"
-      ceph_internal_ip: "10.0.10.137/24"
-      ceph_external_ip: "10.0.20.137/24"
-      tunnel_ip: "10.0.30.137/24"
-      mgmt_default_gw: "192.168.86.1"
-      dns1: "172.16.11.5"
-      dns2: "172.16.11.6"
+      mgmt_ip: 192.168.86.137/24
+      ceph_internal_ip: 10.0.10.137/24
+      ceph_external_ip: 10.0.20.137/24
+      tunnel_ip: 10.0.30.137/24
+      mgmt_default_gw: 192.168.86.1
+      dns1: 172.16.11.5
+      dns2: 172.16.11.6
     openstack138:
       ansible_host: 192.168.86.138
-      mgmt_ip: "192.168.86.138/24"
-      ceph_internal_ip: "10.0.10.138/24"
-      ceph_external_ip: "10.0.20.138/24"
-      tunnel_ip: "10.0.30.138/24"
-      mgmt_default_gw: "192.168.86.1"
-      dns1: "172.16.11.5"
-      dns2: "172.16.11.6"
+      mgmt_ip: 192.168.86.138/24
+      ceph_internal_ip: 10.0.10.138/24
+      ceph_external_ip: 10.0.20.138/24
+      tunnel_ip: 10.0.30.138/24
+      mgmt_default_gw: 192.168.86.1
+      dns1: 172.16.11.5
+      dns2: 172.16.11.6
   vars:
     ansible_become: true
     ansible_become_pass: Password
