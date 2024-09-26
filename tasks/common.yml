@@ -26,6 +26,12 @@
     name: unattended-upgrades
     state: absent
 
+- name: install bridge-utils
+  apt:
+    name: bridge-utils
+    state: present
+    update_cache: true
+
 - name: install chrony
   apt:
     name: chrony
