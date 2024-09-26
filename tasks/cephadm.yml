@@ -63,7 +63,7 @@
 #      --mon-ip "{{ mon_ip }}" \
 #      --cluster-network "{{ cluster_network }}" \
 #      --initial-dashboard-user "{{ ceph_initial_dashboard_user }}" \
-#      --initial-dashboard-password "{{ ceph_initial_dashboard_password }}" | tee /var/log/cephadm.log
+#      --initial-dashboard-password "{{ ceph_initial_dashboard_password }}" | tee /var/log/cephadm_bootstrap.log
 
 - name: generate ceph.pub scripts
   template:
