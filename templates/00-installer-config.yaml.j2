@@ -2,29 +2,28 @@ network:
   version: 2
   ethernets:
     eno12399np0:
+      dhcp4: true
+    "{{ NIC_tunnel }}":
       addresses:
-      - "10.0.10.137/24"
+      - "{{ tunnel_ip }}"
       dhcp4: false
-    eno12409np1:
+    "{{ NIC_mgmt }}":
       addresses:
-      - "10.0.2.137/24"
-      dhcp4: false
-    eno8303:
-      addresses:
-      - "192.168.86.137/24"
+      - "{{ mgmt_ip }}"
       nameservers:
         addresses:
-        - 172.16.11.5
-        - 172.16.11.6
+        - "{{ dns1 }}"
+        - "{{ dns2 }}"
         search: []
       routes:
       - to: "default"
-        via: "192.168.86.1"
+        via: "{{ mgmt_default_gw }}"
     eno8403:
       dhcp4: true
-    enp202s0f0np0:
+    "{{ NIC_external }}":
       dhcp4: true
-    enp202s0f1np1:
+    "{{ NIC_ceph }}":
       addresses:
-      - "10.0.20.137/24"
+      - "{{ ceph_internal_ip }}"
+      - "{{ ceph_external_ip }}"
       dhcp4: false
