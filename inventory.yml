@@ -51,8 +51,8 @@ linux:
       ceph_external_ip: 10.0.20.137/24
       external_ip: 10.0.30.137/24
       mgmt_default_gw: 192.168.86.1
-      dns1: 172.16.11.5
-      dns2: 172.16.11.6
+      dns1: 192.168.86.130
+      dns2: 192.168.86.131
     openstack138:
       ansible_host: 192.168.86.138
       mgmt_ip: 192.168.86.138/24
@@ -60,8 +60,8 @@ linux:
       ceph_external_ip: 10.0.20.138/24
       external_ip: 10.0.30.138/24
       mgmt_default_gw: 192.168.86.1
-      dns1: 172.16.11.5
-      dns2: 172.16.11.6
+      dns1: 192.168.86.130
+      dns2: 192.168.86.131
   vars:
     ansible_become: true
     ansible_become_pass: Password
