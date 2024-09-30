@@ -89,7 +89,7 @@ linux:
       mgmt_ip: 192.168.86.137/24
       ceph_internal_ip: 10.0.10.137/24
       ceph_external_ip: 10.0.20.137/24
-      tunnel_ip: 10.0.30.137/24
+      external_ip: 10.0.30.137/24
       mgmt_default_gw: 192.168.86.1
       dns1: 172.16.11.5
       dns2: 172.16.11.6
@@ -98,7 +98,7 @@ linux:
       mgmt_ip: 192.168.86.138/24
       ceph_internal_ip: 10.0.10.138/24
       ceph_external_ip: 10.0.20.138/24
-      tunnel_ip: 10.0.30.138/24
+      external_ip: 10.0.30.138/24
       mgmt_default_gw: 192.168.86.1
       dns1: 172.16.11.5
       dns2: 172.16.11.6
@@ -107,7 +107,7 @@ linux:
       mgmt_ip: 192.168.86.139/24
       ceph_internal_ip: 10.0.10.139/24
       ceph_external_ip: 10.0.20.139/24
-      tunnel_ip: 10.0.30.139/24
+      external_ip: 10.0.30.139/24
       mgmt_default_gw: 192.168.86.1
       dns1: 172.16.11.5
       dns2: 172.16.11.6
@@ -116,7 +116,7 @@ linux:
       mgmt_ip: 192.168.86.135/24
       ceph_internal_ip: 10.0.10.135/24
       ceph_external_ip: 10.0.20.135/24
-      tunnel_ip: 10.0.30.135/24
+      external_ip: 10.0.30.135/24
       mgmt_default_gw: 192.168.86.1
       dns1: 172.16.11.5
       dns2: 172.16.11.6
@@ -125,7 +125,7 @@ linux:
       mgmt_ip: 192.168.86.134/24
       ceph_internal_ip: 10.0.10.134/24
       ceph_external_ip: 10.0.20.134/24
-      tunnel_ip: 10.0.30.134/24
+      external_ip: 10.0.30.134/24
       mgmt_default_gw: 192.168.86.1
       dns1: 172.16.11.5
       dns2: 172.16.11.6
@@ -134,7 +134,7 @@ linux:
       mgmt_ip: 192.168.86.133/24
       ceph_internal_ip: 10.0.10.133/24
       ceph_external_ip: 10.0.20.133/24
-      tunnel_ip: 10.0.30.133/24
+      external_ip: 10.0.30.133/24
       mgmt_default_gw: 192.168.86.1
       dns1: 172.16.11.5
       dns2: 172.16.11.6
