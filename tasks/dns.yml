@@ -1,0 +1,16 @@
+---
+- name: create /etc/systemd/resolved.conf.d/
+  file:
+    state: directory
+    path: /etc/systemd/resolved.conf.d/
+
+- name: copy netplan_update script to server
+  template:
+    src: dns_servers.conf.j2
+    dest: create /etc/systemd/resolved.conf.d/dns_servers.conf
+    mode: '0644'
+
+- name: update network 
+  systemd_service:
+    name: systemd-resolved
+    state: restarted
