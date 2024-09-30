@@ -4,8 +4,6 @@ network:
     eno12399np0:
       dhcp4: true
     {{ NIC_tunnel }}:
-      addresses:
-      - {{ tunnel_ip }}
       dhcp4: false
     {{ NIC_mgmt }}:
       addresses:
