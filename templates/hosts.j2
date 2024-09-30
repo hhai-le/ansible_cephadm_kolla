@@ -1,7 +1,7 @@
 127.0.0.1 localhost
 
 {% for node in groups["linux"] %}
-{{ hostvars[node].mgmt_ip | ansible.utils.ipaddr('address') }} {{ hostvars[node].inventory_hostname}}
+{{ hostvars[node].mgmt_ip | ansible.utils.ipaddr('address') }} {{ hostvars[node].inventory_hostname}} {{ hostvars[node].inventory_hostname}}.lab.local
 {% endfor %}
 
 {{ virtual_ip }} {{ virtual_domain }}
