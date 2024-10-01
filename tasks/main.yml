@@ -1,6 +1,6 @@
 ---
 # tasks file for ansible_openstack_ceph
-#- include_tasks: netplan.yml
+- include_tasks: netplan.yml
 - include_tasks: dns.yml
 - include_tasks: common.yml
 - include_tasks: docker.yml
